@@ -1,30 +1,67 @@
 .v4-floating-workspace.v4-wizard-small-editor {
   width: min(600px, calc(100vw - 40px));
   height: auto;
+  min-height: 0;
   max-height: calc(100dvh - 48px);
 }
-.v4-wizard-small-editor .v4-floating-workspace__body {
+
+.v4-floating-workspace.v4-editor-float {
+  width: min(600px, calc(100vw - 40px));
+  height: auto;
+  min-height: 0;
+  max-height: calc(100dvh - 48px);
+}
+
+.v4-floating-workspace.v4-editor-float:has(.v4-wizard-template-browser) {
+  width: min(820px, calc(100vw - 40px));
+}
+
+.v4-floating-workspace:has(> .v4-floating-workspace__body > .project-folder-tree) {
+  width: min(760px, calc(100vw - 40px));
+  height: auto;
+  min-height: 0;
+  max-height: calc(100dvh - 48px);
+}
+
+.v4-floating-workspace:has(> .v4-floating-workspace__body > label > input[maxlength='120']) {
+  width: min(600px, calc(100vw - 40px));
+  height: auto;
+  min-height: 0;
+  max-height: calc(100dvh - 48px);
+}
+
+.v4-wizard-small-editor .v4-floating-workspace__body,
+.v4-floating-workspace.v4-editor-float .v4-floating-workspace__body,
+.v4-floating-workspace:has(> .v4-floating-workspace__body > .project-folder-tree) .v4-floating-workspace__body,
+.v4-floating-workspace:has(> .v4-floating-workspace__body > label > input[maxlength='120']) .v4-floating-workspace__body {
   min-height: 0;
   overflow: auto;
   padding: 24px;
 }
-.v4-wizard-small-editor .v4-floating-workspace__footer {
+
+.v4-wizard-small-editor .v4-floating-workspace__footer,
+.v4-floating-workspace.v4-editor-float .v4-floating-workspace__footer,
+.v4-floating-workspace:has(> .v4-floating-workspace__body > .project-folder-tree) .v4-floating-workspace__footer,
+.v4-floating-workspace:has(> .v4-floating-workspace__body > label > input[maxlength='120']) .v4-floating-workspace__footer {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
   flex-wrap: wrap;
 }
+
 .v4-wizard-template-browser {
   display: grid;
   grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr);
   gap: 24px;
 }
+
 .v4-wizard-template-browser > div:first-child {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 8px;
 }
+
 @media (max-width: 640px) {
   .v4-wizard-template-browser {
     grid-template-columns: 1fr;
