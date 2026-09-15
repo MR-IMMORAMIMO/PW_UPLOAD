@@ -2,8 +2,10 @@ node_modules/
 dist/
 build/
 out/
-output/
-outputs/
+/output/
+/outputs/
+/PERSONAL-WORKSPACE-V4/output/
+/PERSONAL-WORKSPACE-V4/outputs/
 release-team/
 release-original-team/
 tmp/
