@@ -7,6 +7,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: portable-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   portable:
     runs-on: windows-latest
