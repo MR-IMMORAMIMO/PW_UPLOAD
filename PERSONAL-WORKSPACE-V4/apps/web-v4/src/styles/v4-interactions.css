@@ -118,6 +118,10 @@
   select:not([multiple]):not([size])::picker(select) {
     appearance: base-select;
   }
+  select:not([multiple]):not([size]) {
+    line-height: 1.25;
+    vertical-align: middle;
+  }
   select::picker(select) {
     background: var(--v4-surface-floating, var(--v4-surface-raised));
     color: var(--v4-text-primary);
@@ -147,9 +151,12 @@
     }
   }
   select option {
+    display: flex;
+    align-items: center;
     padding: 8px 10px;
     border-radius: 6px;
     min-height: 30px;
+    line-height: 1.25;
     color: var(--v4-text-primary);
     background: transparent;
   }

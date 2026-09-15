@@ -43,12 +43,14 @@
   min-height: 0;
   max-height: calc(100dvh - 48px);
 }
-.v4-floating-workspace:has(> .v4-floating-workspace__body > .project-folder-tree) > .v4-floating-workspace__body {
+.v4-floating-workspace:has(> .v4-floating-workspace__body > .project-folder-tree)
+  > .v4-floating-workspace__body {
   min-height: 0;
   overflow: auto;
   padding: 24px;
 }
-.v4-floating-workspace:has(> .v4-floating-workspace__body > .project-folder-tree) > .v4-floating-workspace__footer {
+.v4-floating-workspace:has(> .v4-floating-workspace__body > .project-folder-tree)
+  > .v4-floating-workspace__footer {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
@@ -61,12 +63,14 @@
   min-height: 0;
   max-height: calc(100dvh - 48px);
 }
-.v4-floating-workspace:has(> .v4-floating-workspace__body > label > input[maxlength='120']) > .v4-floating-workspace__body {
+.v4-floating-workspace:has(> .v4-floating-workspace__body > label > input[maxlength='120'])
+  > .v4-floating-workspace__body {
   min-height: 0;
   overflow: auto;
   padding: 24px;
 }
-.v4-floating-workspace:has(> .v4-floating-workspace__body > label > input[maxlength='120']) > .v4-floating-workspace__footer {
+.v4-floating-workspace:has(> .v4-floating-workspace__body > label > input[maxlength='120'])
+  > .v4-floating-workspace__footer {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
