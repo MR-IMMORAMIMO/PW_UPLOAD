@@ -1,11 +1,4 @@
-import {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type CSSProperties,
-  type ReactNode,
-} from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import type {
   OutputFamily,
   ResolvedOutputEnvelope,
@@ -165,14 +158,6 @@ export function V4OutputPresentationLauncher({
   const [error, setError] = useState<string | null>(null);
   const [generatedPath, setGeneratedPath] = useState<string | null>(null);
 
-  const selectedTemplateOption = useMemo(
-    () =>
-      templateOptions.find(
-        (item) => `${item.templateId}::${item.templateVersionId}` === selectedTemplateKey,
-      ),
-    [selectedTemplateKey, templateOptions],
-  );
-
   useEffect(() => {
     if (open) return;
     setSelectedTemplateKey(templateKey(selectedTemplate));
@@ -270,7 +255,8 @@ export function V4OutputPresentationLauncher({
     }
   };
 
-  const blockingMessages = preview?.messages.filter((message) => message.level === 'BLOCKING_ERROR') ?? [];
+  const blockingMessages =
+    preview?.messages.filter((message) => message.level === 'BLOCKING_ERROR') ?? [];
   const busy = previewing || generating;
 
   return (
@@ -301,7 +287,12 @@ export function V4OutputPresentationLauncher({
                 <Check aria-hidden="true" /> Output generated
               </span>
             ) : null}
-            <V4Button variant="secondary" size="compact" disabled={busy} onClick={() => void runPreview()}>
+            <V4Button
+              variant="secondary"
+              size="compact"
+              disabled={busy}
+              onClick={() => void runPreview()}
+            >
               <RefreshCw aria-hidden="true" /> {previewing ? 'Refreshing…' : 'Refresh Preview'}
             </V4Button>
             {generatedPath && window.scliDesktop?.openPath ? (
@@ -443,7 +434,9 @@ export function V4OutputPresentationLauncher({
           </div>
         </aside>
         <section className="v4-output-launcher__preview" aria-live="polite">
-          {previewing ? <div className="v4-output-launcher__state">Resolving preview…</div> : null}
+          {previewing ? (
+            <div className="v4-output-launcher__state">Resolving preview…</div>
+          ) : null}
           {error ? (
             <div className="v4-output-launcher__error" role="alert">
               {error}
@@ -481,7 +474,13 @@ export function V4OutputPresentationLauncher({
                 <div className="v4-output-launcher__messages">
                   {preview.messages.map((message, index) => (
                     <p key={`${message.code}-${index}`} data-level={message.level}>
-                      <b>{message.level === 'BLOCKING_ERROR' ? 'Blocking' : message.level === 'WARNING' ? 'Warning' : 'Info'}</b>
+                      <b>
+                        {message.level === 'BLOCKING_ERROR'
+                          ? 'Blocking'
+                          : message.level === 'WARNING'
+                            ? 'Warning'
+                            : 'Info'}
+                      </b>
                       {message.message}
                     </p>
                   ))}
