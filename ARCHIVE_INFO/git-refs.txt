@@ -1,0 +1,17 @@
+399f6e2c2b1de7847e7e790a51720cc80aa0e95c refs/archive/stash-e2e05a-full
+fbf4e3509ba6be0227209a2e456877ecc3ceb098 refs/heads/chore/v4-golden-uat-exact-reset
+c1da8aeae7ccb529e0f10c1eea3132c4b1fd18f6 refs/heads/codex/approved-ui-completion
+c1da8aeae7ccb529e0f10c1eea3132c4b1fd18f6 refs/heads/codex/figma-preserved-2026-09-11
+6e1f87bed38b072ac82fe5e8bd80118f15f9adc5 refs/heads/codex/local-ai-verification
+e83aa5ffb364b259ca77f0181776ba695be7fc9f refs/heads/codex/phase-5a-master-luminaire-library
+25076b905c6d5b3d77d5b77a7cc610596bc58ad9 refs/heads/codex/phase-5b-smart-import-center
+1a18e2c6568af2cb230d3407e39ae2524012924c refs/heads/codex/phase-5c-document-intelligence
+17a9d57e973dee955bb8146a099541ff0ff62c24 refs/heads/codex/pre-figma-restored
+087ca56e26171c1283313e4a8e27ae6876c2a5cd refs/heads/codex/stable-portable-3.2.3
+78951ffb44397cc5f423492c6bc95caa25a3ffc9 refs/heads/feature/v3.3-migration-foundation
+e187f7e5351630bfced7863e2aa90c4ec1fca7ca refs/heads/feature/v4-clean-ui-foundation
+087ca56e26171c1283313e4a8e27ae6876c2a5cd refs/heads/feature/v4-mainline
+f3a316eeb882738e5a93d463882cbb115ae49653 refs/heads/master
+098b2ca98c1a7f5ec45c29fd6b8818d4691bd18e refs/heads/shelf/primary-output-template-preconsolidation
+399f6e2c2b1de7847e7e790a51720cc80aa0e95c refs/stash
+1ae6a48e9cf8a5497fe2f138922dd8936b1deb8e refs/tags/v3.3-v4-foundation-baseline

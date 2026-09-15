@@ -1,0 +1,76 @@
+/**
+ * Controlled semantic icon vocabulary for V4 presentation surfaces.
+ *
+ * Keep this as named imports and an explicit object: consumers select a
+ * semantic key, while bundlers can still statically trace every Lucide icon.
+ */
+import { type LucideIcon } from 'lucide-react';
+import {
+  Boxes,
+  Building2,
+  CalendarDays,
+  ClipboardCheck,
+  CircleOff,
+  Contact,
+  FileChartColumn,
+  SctPdf,
+  SctScope,
+  SctSummary,
+  SctRevisions,
+  SctDeliverables,
+  Files,
+  Flag,
+  Lamp,
+  LayoutPanelTop,
+  Lightbulb,
+  ListChecks,
+  MessageSquareText,
+  NotebookPen,
+  PackageCheck,
+  PackagePlus,
+  Presentation,
+  ReceiptText,
+  SquareCheck,
+  SunMedium,
+  TableProperties,
+  Tags,
+  UserRound,
+  Users,
+} from './SctIcons';
+
+export const v4SemanticIcons = {
+  projectScope: SctScope,
+  deliverables: SctDeliverables,
+  requirements: ListChecks,
+  note: NotebookPen,
+  exclusion: CircleOff,
+  summary: SctSummary,
+  lightingLayout: LayoutPanelTop,
+  lightingDesign: Lightbulb,
+  dialuxCalculation: SunMedium,
+  dialuxReport: FileChartColumn,
+  luminaireSelection: Lamp,
+  luminaireSchedule: TableProperties,
+  technicalBOQ: ReceiptText,
+  datasheet: SctPdf,
+  datasheetsPackage: Files,
+  pdf: SctPdf,
+  presentation: Presentation,
+  threeDVisualization: Boxes,
+  customDeliverable: PackagePlus,
+  issuePackage: PackageCheck,
+  package: PackageCheck,
+  revision: SctRevisions,
+  meeting: CalendarDays,
+  action: SquareCheck,
+  comment: MessageSquareText,
+  contact: Contact,
+  technicalCheck: ClipboardCheck,
+  client: Users,
+  sales: UserRound,
+  priority: Flag,
+  tags: Tags,
+  organization: Building2,
+} satisfies Record<string, LucideIcon>;
+
+export type V4SemanticIconKey = keyof typeof v4SemanticIcons;

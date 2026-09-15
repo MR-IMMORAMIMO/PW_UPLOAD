@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Authentication complete</title>
+  </head>
+  <body>
+    <script src="https://res.cdn.office.net/teams-js/2.54.0/js/MicrosoftTeams.min.js"></script>
+    <script>
+      microsoftTeams.app.initialize().then(function () {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('error')) microsoftTeams.authentication.notifyFailure(params.get('error'));
+        else microsoftTeams.authentication.notifySuccess(params.get('result') || 'complete');
+      });
+    </script>
+  </body>
+</html>

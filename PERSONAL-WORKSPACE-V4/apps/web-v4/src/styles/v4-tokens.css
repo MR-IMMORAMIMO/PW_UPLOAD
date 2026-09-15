@@ -1,0 +1,221 @@
+/**
+ * Personal Workspace V4 visual authority.
+ *
+ * Phase 3C keeps raw brand/accent colour separate from the darker filled-action
+ * colour and preserves the Phase 3B motion/layer lifecycle verbatim.
+ */
+
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  /* Brand */
+  --v4-brand-navy: #1f213f;
+  --v4-brand-teal: #479ba2;
+  --v4-brand-purple: #49406f;
+  --v4-brand-gold: #f6c96b;
+  --v4-accent: #479ba2;
+  --v4-action-primary: #2f7379;
+  --v4-action-primary-foreground: #ffffff;
+  --v4-action-primary-text: var(--v4-action-primary-foreground);
+  --v4-accent-foreground: var(--v4-action-primary-foreground);
+  --v4-accent-soft: color-mix(in srgb, var(--v4-accent) 14%, transparent);
+  --v4-accent-hover: color-mix(in srgb, var(--v4-accent) 8%, transparent);
+  --v4-accent-selected: color-mix(in srgb, var(--v4-accent) 14%, transparent);
+
+  /* Base / raised / floating surface hierarchy */
+  --v4-surface-shell: #f4f6f8;
+  --v4-surface-base: #f4f6f8;
+  --v4-surface-raised: #ffffff;
+  --v4-surface-floating: #ffffff;
+  --v4-surface-disabled: #f1f5f9;
+  --v4-text-primary: #111827;
+  --v4-text-secondary: #334155;
+  --v4-text-muted: #64748b;
+  --v4-text-disabled: #94a3b8;
+  --v4-border-subtle: #e5eaf0;
+  --v4-border-control: #cbd5e1;
+  --v4-border-strong: #94a3b8;
+
+  /* Compatibility aliases retained while page CSS converges. */
+  --v4-canvas: var(--v4-surface-base);
+  --v4-surface: var(--v4-surface-raised);
+  --v4-surface-elevated: var(--v4-surface-floating);
+  --v4-border: var(--v4-border-subtle);
+  --v4-border-default: var(--v4-border-control);
+  --v4-surface-muted: color-mix(in srgb, var(--v4-text-muted) 9%, var(--v4-surface-raised));
+  --v4-surface-subtle: color-mix(in srgb, var(--v4-surface-base) 68%, var(--v4-surface-raised));
+  --v4-surface-sunken: #eef1f5;
+  --v4-surface-hover: color-mix(in srgb, var(--v4-accent) 6%, var(--v4-surface-raised));
+  --v4-brand-navy-surface: var(--v4-brand-navy);
+
+  /* Elevation */
+  --v4-shadow-raised: 0 1px 2px rgb(15 23 42 / 5%), 0 4px 12px rgb(15 23 42 / 4%);
+  --v4-shadow-floating: 0 16px 40px rgb(15 23 42 / 16%);
+  --v4-shadow-sm: var(--v4-shadow-raised);
+
+  /* Spacing */
+  --v4-space-xxs: 2px;
+  --v4-space-xs: 4px;
+  --v4-space-sm: 8px;
+  --v4-space-md: 12px;
+  --v4-space-lg: 16px;
+  --v4-space-xl: 20px;
+  --v4-space-2xl: 24px;
+  --v4-space-3xl: 32px;
+  --v4-space-1: var(--v4-space-xs);
+  --v4-space-2: var(--v4-space-sm);
+  --v4-space-3: var(--v4-space-md);
+  --v4-space-4: var(--v4-space-lg);
+  --v4-space-5: var(--v4-space-2xl);
+  --v4-space-6: var(--v4-space-3xl);
+
+  /* Radius */
+  --v4-radius-control: 8px;
+  --v4-radius-card: 10px;
+  --v4-radius-floating: 14px;
+  --v4-radius-pill: 999px;
+  --v4-radius-sm: var(--v4-radius-control);
+  --v4-radius-md: var(--v4-radius-card);
+  --v4-radius-lg: var(--v4-radius-floating);
+
+  /* Typography */
+  --v4-type-app-size: 16px;
+  --v4-type-app-line: 22px;
+  --v4-type-page-size: 22px;
+  --v4-type-page-line: 28px;
+  --v4-type-section-size: 16px;
+  --v4-type-section-line: 22px;
+  --v4-type-card-size: 14px;
+  --v4-type-card-line: 20px;
+  --v4-type-body-size: 13px;
+  --v4-type-body-line: 20px;
+  --v4-type-compact-size: 12px;
+  --v4-type-compact-line: 18px;
+  --v4-type-metadata-size: 12px;
+  --v4-type-metadata-line: 16px;
+  --v4-type-label-size: 11px;
+  --v4-type-label-line: 16px;
+  --v4-type-caption-size: 10px;
+  --v4-type-caption-line: 14px;
+
+  /* Controls / rows / icons */
+  --v4-control-compact-height: 32px;
+  --v4-control-height: 36px;
+  --v4-textarea-min-height: 84px;
+  --v4-status-height: 22px;
+  --v4-row-compact-min-height: 32px;
+  --v4-row-standard-min-height: 40px;
+  --v4-row-rich-min-height: 52px;
+  --v4-icon-small: 14px;
+  --v4-icon-medium: 16px;
+  --v4-icon-large: 20px;
+
+  /* Focus */
+  --v4-focus-ring: var(--v4-action-primary);
+  --v4-focus-separation: var(--v4-surface-raised);
+  --v4-focus-shadow: 0 0 0 2px var(--v4-focus-separation), 0 0 0 4px var(--v4-focus-ring);
+
+  /* Semantic colour authority */
+  --v4-success: #22c55e;
+  --v4-warning: #f59e0b;
+  --v4-danger: #ef4444;
+  --v4-info: #3b82f6;
+  --v4-neutral: #64748b;
+  --v4-status-neutral-fg: #475569;
+  --v4-status-neutral-bg: #f1f5f9;
+  --v4-status-neutral-border: #cbd5e1;
+  --v4-status-info-fg: #1d4ed8;
+  --v4-status-info-bg: #eff6ff;
+  --v4-status-info-border: #bfdbfe;
+  --v4-status-success-fg: #15803d;
+  --v4-status-success-bg: #f0fdf4;
+  --v4-status-success-border: #bbf7d0;
+  --v4-status-warning-fg: #92400e;
+  --v4-status-warning-bg: #fffbeb;
+  --v4-status-warning-border: #fde68a;
+  --v4-status-critical-fg: #b91c1c;
+  --v4-status-critical-bg: #fef2f2;
+  --v4-status-critical-border: #fecaca;
+  --v4-status-inactive-fg: #64748b;
+  --v4-status-inactive-bg: #f1f5f9;
+  --v4-status-inactive-border: #e2e8f0;
+  --v4-tone-scope: var(--v4-brand-teal);
+  --v4-tone-deliverables: var(--v4-info);
+  --v4-tone-requirements: var(--v4-warning);
+  --v4-tone-notes: var(--v4-brand-purple);
+  --v4-tone-summary: var(--v4-accent);
+
+  /* Stable system geometry and Phase 3B layer authority */
+  --v4-card-header-first-row-gap: var(--v4-space-md);
+  --v4-z-content: 1;
+  --v4-layer-base: 0;
+  --v4-layer-sticky: 100;
+  --v4-layer-inspector: 200;
+  --v4-layer-popover: 300;
+  --v4-layer-backdrop: 400;
+  --v4-layer-modal: 410;
+  --v4-layer-nested-dialog: 420;
+  --v4-layer-tooltip-toast: 500;
+  --v4-z-overlay: var(--v4-layer-backdrop);
+
+  /* Phase 3B motion lock */
+  --v4-duration-fast: 140ms;
+  --v4-duration-standard: 180ms;
+  --v4-duration-workspace: 210ms;
+  --v4-ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --v4-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --v4-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --v4-translate-sm: 4px;
+  --v4-translate-md: 8px;
+  --v4-scale-enter: 0.985;
+
+  /* Shared Sidebar tree geometry */
+  --v4-tree-inset: 24px;
+  --v4-tree-trunk-width: 1px;
+  --v4-tree-opacity: 0.1;
+  --v4-tree-cap: round;
+  --v4-tree-curve-radius: 8px;
+  --v4-tree-branch-minimal: 24px;
+  --v4-tree-branch-extended: 8px;
+  --v4-subtree-row-height: 36px;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --v4-surface-shell: #090d12;
+  --v4-surface-base: #0d1218;
+  --v4-surface-raised: #151c24;
+  --v4-surface-floating: #1b2530;
+  --v4-surface-disabled: #111820;
+  --v4-text-primary: #f1f5f9;
+  --v4-text-secondary: #cbd5e1;
+  --v4-text-muted: #94a3b8;
+  --v4-text-disabled: #64748b;
+  --v4-border-subtle: #27313b;
+  --v4-border-control: #364250;
+  --v4-border-strong: #526173;
+  --v4-shadow-raised: 0 1px 0 rgb(255 255 255 / 3%);
+  --v4-shadow-floating: 0 18px 48px rgb(0 0 0 / 38%);
+  --v4-focus-separation: var(--v4-surface-base);
+  --v4-surface-sunken: #0d1218;
+  --v4-surface-hover: color-mix(in srgb, var(--v4-accent) 10%, var(--v4-surface-raised));
+  --v4-status-neutral-fg: #cbd5e1;
+  --v4-status-neutral-bg: #202a35;
+  --v4-status-neutral-border: #526173;
+  --v4-status-info-fg: #93c5fd;
+  --v4-status-info-bg: #172554;
+  --v4-status-info-border: #1d4ed8;
+  --v4-status-success-fg: #86efac;
+  --v4-status-success-bg: #11351f;
+  --v4-status-success-border: #237a41;
+  --v4-status-warning-fg: #fcd34d;
+  --v4-status-warning-bg: #3b2a0d;
+  --v4-status-warning-border: #a16207;
+  --v4-status-critical-fg: #fca5a5;
+  --v4-status-critical-bg: #3f171b;
+  --v4-status-critical-border: #b91c1c;
+  --v4-status-inactive-fg: #94a3b8;
+  --v4-status-inactive-bg: #111820;
+  --v4-status-inactive-border: #364250;
+}

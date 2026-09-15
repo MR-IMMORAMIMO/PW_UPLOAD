@@ -1,0 +1,20 @@
+node_modules
+dist
+coverage
+playwright-report
+playwright-report-personal
+test-results
+appPackage/build
+release
+release-*
+pnpm-lock.yaml
+
+# Disposable QA output and local data are not source files.
+tmp
+output
+outputs
+
+# Immutable owner reference; transformed only by the integration adapter.
+tools/luminaire-studio-v1.4.1
+
+review-radio-station

@@ -1,0 +1,126 @@
+{
+  "version": "1.4.1",
+  "source": "Owner supplied Luminaire_Studio_Portable_v1_4_1/Luminaire_Studio",
+  "files": [
+    {
+      "path": "app.js",
+      "sha256": "ef59bbc5df7590cc160f088ee5b239b4989b88da9f40e772e7f5eadf9c8ea6dd",
+      "bytes": 46818
+    },
+    {
+      "path": "core.js",
+      "sha256": "b589287a7bd108d650b33510a91cb7ac7ff472e07e84ecf2da1eb603a6525fb0",
+      "bytes": 17054
+    },
+    {
+      "path": "datasheet-ui.css",
+      "sha256": "150bd6b425ffdcf5ac5e0231a91bbaf7fa7bf9da22f4f73d73f9e659588a010c",
+      "bytes": 1361
+    },
+    {
+      "path": "datasheet-ui.js",
+      "sha256": "ae868660ce97739f4d6c72a87ff3bea55ad1356ba5234713168e17c0932ba889",
+      "bytes": 10412
+    },
+    {
+      "path": "datasheet-xlsx.js",
+      "sha256": "03fe32a21c573fecf466c35cdbbbfe9bef725b163a5ceac4813aaa1efdb682c4",
+      "bytes": 9096
+    },
+    {
+      "path": "datasheet.js",
+      "sha256": "ca5eaa9f6384bc20213302b9c0e4d2dd9dde337600030b25cb449ed468223412",
+      "bytes": 12379
+    },
+    {
+      "path": "export.js",
+      "sha256": "0a29d3a797fcadee777ecd7374d1c4e82739d3dc41023183bbce816294cabed8",
+      "bytes": 21180
+    },
+    {
+      "path": "fonts/Montserrat-Bold.ttf",
+      "sha256": "dd8b71582ca3e16da7bf3fb1fb5d4ee0f6d216f7da7d1a4d40e075eff58cd665",
+      "bytes": 69352
+    },
+    {
+      "path": "fonts/Montserrat-OFL.txt",
+      "sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e",
+      "bytes": 4400
+    },
+    {
+      "path": "fonts/Montserrat-Regular.ttf",
+      "sha256": "bb81d2b4631d6df89c890060d004b53990de6422567cca2deae7b3af96263bcc",
+      "bytes": 70052
+    },
+    {
+      "path": "fonts/Roboto-Bold.ttf",
+      "sha256": "bbf3e2a2cb10a5a59284f96f97f4083c176798fe709633db019da376b10936e9",
+      "bytes": 44864
+    },
+    {
+      "path": "fonts/Roboto-OFL.txt",
+      "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41",
+      "bytes": 4394
+    },
+    {
+      "path": "fonts/Roboto-Regular.ttf",
+      "sha256": "e9ff3730797df6aaf76d37c48234a6c4875032eaad8f1aaccd7daefa6dca9e7a",
+      "bytes": 44724
+    },
+    {
+      "path": "fonts.js",
+      "sha256": "4df80e15759a43c628af31f0a4773b8de4ab5b32085d595147ec88726af3e190",
+      "bytes": 305845
+    },
+    {
+      "path": "INTEGRATION.md",
+      "sha256": "cf53ff9a8f03feeb4bb106e0023e1837afb85560964e96127fc6bc363e469520",
+      "bytes": 4742
+    },
+    {
+      "path": "logo.js",
+      "sha256": "92e23fcbec3bfb6201d4059cf30214177139043e6c931170d07c58b5091bc96c",
+      "bytes": 1605
+    },
+    {
+      "path": "page-layout.js",
+      "sha256": "effcc12f085a9f05e3bbd3c71b809683ba90daf91d8c0d6b674be0aa838c4ca1",
+      "bytes": 9404
+    },
+    {
+      "path": "README.md",
+      "sha256": "85b5007da5b78202b678fa9303d30a922078fc9caaa4d1f3e24164aef919ac5e",
+      "bytes": 17303
+    },
+    {
+      "path": "Sample_Project.luminaire.json",
+      "sha256": "fd7fb5dc0da092025a19615f1ff5c62ed05c6a690cb86b5364978756c416e0b4",
+      "bytes": 18812
+    },
+    {
+      "path": "START.html",
+      "sha256": "640bfed600af0aa24784950ede1f202d345aa37934cbdad73bbc65e01661a171",
+      "bytes": 942
+    },
+    {
+      "path": "START_HERE.txt",
+      "sha256": "9fdc7be6bb9abb65762405bfb7e2a95c18050a2e40f6f7467e68bd3aa9080a09",
+      "bytes": 2696
+    },
+    {
+      "path": "style.css",
+      "sha256": "839a3899d9cdeb7711bec54739ffeabf46dc8f2500c20ee5860e97a1585ab6b6",
+      "bytes": 12891
+    },
+    {
+      "path": "vendor/JSZip-LICENSE.md",
+      "sha256": "566c953c6090b1218ca6217dd7359d45dde46581968586dc607d59a78af6a9c4",
+      "bytes": 33753
+    },
+    {
+      "path": "vendor/jszip.min.js",
+      "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+      "bytes": 97630
+    }
+  ]
+}

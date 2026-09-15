@@ -1,0 +1,61 @@
+import { StandaloneDataProvider } from '../apps/api/src/standalone-data-provider';
+import { join } from 'path';
+import { existsSync, rmSync } from 'fs';
+
+describe('StandaloneDataProvider migration framework', () => {
+  const testDbPath = join(__dirname, '..', 'temp', 'test-migration.sqlite');
+
+  beforeEach(() => {
+    // Ensure the directory exists
+    const dir = require('path').dirname(testDbPath);
+    if (!require('fs').existsSync(dir)) {
+      require('fs').mkdirSync(dir, { recursive: true });
+    }
+    // Remove any existing test database
+    if (require('fs').existsSync(testDbPath(testDbPath)) {
+      require('fs').rmSync(testDbPath);
+    }
+  });
+
+  afterEach(() => {
+    if (require('fs').existsSync(testDbPath)) {
+      require('fs').rmSync(testDbPath);
+    }
+  });
+
+  test('should run migrations and set schema version to 1', () => {
+    // Create a minimal config for the StandaloneDataProvider
+    const config = {
+      STANDALONE_DB_PATH: testDbPath,
+      STANDALONE_SESSION_SECRET: 'test-secret',
+      STANDALONE_ADMIN_NAME: 'Admin',
+      STANDALONE_ADMIN_EMAIL: 'admin@test.com',
+      STANDALONE_ADMIN_PASSWORD: 'password123',
+      LUMINAIRE_EXPORTER_PATH: '',
+      APP_MODE: 'standalone',
+      WORKSPACE_VARIANT: 'personal',
+      PERSONAL_AUTO_LOGIN: 'true',
+      NODE_ENV: 'test',
+      PORT: '0',
+      WEB_ORIGIN: 'http://localhost',
+      LOG_LEVEL: 'warn',
+    } as any;
+
+    const provider = new StandaloneDataProvider(config);
+
+    // Check that the schema_migrations table exists
+    const tableExists = provider.database.prepare(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='schema_migrations'"
+    ).get() as { name: string } | undefined;
+
+    expect(tableExists).toBeDefined();
+    expect(tableExists?.name).toBe('schema_migrations');
+
+    // Check that the version is 1
+    const versionRow = provider.database.prepare('SELECT MAX(version) as version FROM schema_migrations').get();
+    const version = versionRow.version as number | null;
+    expect(version).toBe(1);
+
+    provider.close();
+  });
+});

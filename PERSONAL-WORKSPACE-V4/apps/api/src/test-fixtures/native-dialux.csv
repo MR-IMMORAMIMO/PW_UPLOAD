@@ -1,0 +1,7 @@
+NumberText;ManufNameText;ImageText;ArticleNumberText;ArticleNameText;EquipmentText;LampLuminousFluxText;LuminaireLuminousFluxText;EmergencyLuminousFluxText;LightOutputRationText;ConnectedLoadText;EmergencyConnectedLoadText;LuminousEfficancyText;EmergencyLightingFactorText;CCTText;CRIText;TAGText
+pcs.;Manufacturer;Image;Article No.;Article name;Fitting;Φ (Lamp) [lm] ;Φ (Luminaire) [lm];Φ (Emergency lighting) [lm];η [%];P [W];P (Emergency lighting) [W];Luminous efficacy [lm/W];ELF [%];CCT;CRI;TAG
+83;ERCO;;33367000;Kubus floor washlight 1xLED 3W warm white;1x LED;–;242;0;–;4.4;0.0;55.0;–;3000 K;92;WL01
+;;;;;;;;;;;;;;;;
+12;FLOS;;F12345;Coordinates modular downlight;LED;800;720;0;90;8.5;0.0;84.7;0;2700 K;90;DL01
+;;;;;;;;;;;;;;;;
+4;ERCO;;E45678;Optec spotlight;LED;1200;1100;0;92;–;0.0;91.7;0;4000 K;95;UL01

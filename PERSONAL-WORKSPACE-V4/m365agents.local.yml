@@ -1,0 +1,18 @@
+version: 1.7.0
+
+environmentFolderPath: ./env
+
+provision:
+  - uses: teamsApp/validateManifest
+    with:
+      manifestPath: ./appPackage/manifest.json
+  - uses: teamsApp/zipAppPackage
+    with:
+      manifestPath: ./appPackage/manifest.json
+      outputZipPath: ./appPackage/build/appPackage.local.zip
+      outputFolder: ./appPackage/build
+
+deploy:
+  - uses: cli/runNpmCommand
+    with:
+      args: run build

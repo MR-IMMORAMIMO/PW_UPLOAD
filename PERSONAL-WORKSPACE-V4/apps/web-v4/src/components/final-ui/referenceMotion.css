@@ -1,0 +1,225 @@
+.final-ui-reference {
+  /*
+   * SCT Motion System — "Smooth and deliberate"
+   * Medium speed · gentle ease-out · cards glide in · no bounce
+   */
+
+  /* Durations */
+  --dur-fast: 140ms; /* micro: hover bg, icon tint, row highlight */
+  --dur-std: 240ms; /* nav active, chevron rotate, chip select */
+  --dur-med: 320ms; /* sidebar, dropdowns, panel swaps */
+  --dur-slow: 420ms; /* modal backdrop + panel, drawer open */
+  --dur-glide: 360ms; /* card / row entrance glide */
+
+  /*
+   * Single easing used throughout — smooth, deliberate deceleration.
+   * Starts quick, settles softly. No overshoot.
+   */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1); /* exit transitions only */
+
+  --sidebar-width-expanded: 290px;
+  --sidebar-width-collapsed: 68px;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+
+.sidebar-animate {
+  transition:
+    width var(--dur-med) var(--ease-out),
+    padding var(--dur-med) var(--ease-out);
+  overflow: hidden;
+}
+
+/* Labels fade + slide left; timed to finish before container is fully narrow */
+.sidebar-label {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity 160ms var(--ease-out),
+    transform 160ms var(--ease-out);
+  white-space: nowrap;
+}
+.sidebar-collapsed .sidebar-label {
+  opacity: 0;
+  transform: translateX(-8px);
+  pointer-events: none;
+}
+
+/* ── Nav items ───────────────────────────────────────────────────────────── */
+
+.nav-item {
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+/* ── Chevron / dropdown arrow ────────────────────────────────────────────── */
+
+.chevron-icon {
+  transition: transform var(--dur-std) var(--ease-out);
+  display: inline-flex;
+}
+.chevron-open {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown panel ──────────────────────────────────────────────────────── */
+
+.dropdown-enter {
+  animation: dropdownIn var(--dur-med) var(--ease-out) both;
+}
+.dropdown-exit {
+  animation: dropdownOut var(--dur-std) var(--ease-in-out) both;
+}
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes dropdownOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+
+/* ── Modal ───────────────────────────────────────────────────────────────── */
+
+/* No bounce — smooth glide up + fade */
+.modal-panel-enter {
+  animation: panelIn var(--dur-slow) var(--ease-out) both;
+}
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.modal-panel-exit {
+  animation: panelOut var(--dur-std) var(--ease-in-out) both;
+}
+@keyframes panelOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+}
+
+/* ── KPI / card entrance — deliberate glide ──────────────────────────────── */
+
+.kpi-card-enter {
+  animation: cardGlideIn var(--dur-glide) var(--ease-out) both;
+}
+@keyframes cardGlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Row glide (panels, lists) ───────────────────────────────────────────── */
+
+.row-glide-enter {
+  animation: rowGlideIn var(--dur-std) var(--ease-out) both;
+}
+@keyframes rowGlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Button press feedback */
+.btn-pressable {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
+}
+.btn-pressable:active {
+  transform: scale(0.97);
+}
+
+/* Row hover in tables */
+.table-row-hover {
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+/* Inspector / side panel slide */
+.panel-slide-enter {
+  animation: panelSlideIn var(--dur-med) var(--ease-out) both;
+}
+@keyframes panelSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Kanban drag-drop ────────────────────────────────────────────────────────── */
+
+/* Pulse bar shown at the bottom of an occupied drop column */
+.kanban-drop-pulse {
+  animation: kanbanPulse 900ms ease-in-out infinite alternate;
+}
+@keyframes kanbanPulse {
+  from {
+    opacity: 0.5;
+    transform: scaleX(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* ── Nav card spinning border light ─────────────────────────────────────────── */
+
+@keyframes navBorderSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Reduced motion override */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}

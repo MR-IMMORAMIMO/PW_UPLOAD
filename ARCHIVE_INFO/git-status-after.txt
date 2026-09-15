@@ -1,0 +1,1225 @@
+ M .prettierignore
+ M apps/api/src/app.ts
+ M apps/api/src/comments-thread-foundation.test.ts
+ M apps/api/src/final-project-setup.test.ts
+ M apps/api/src/golden-uat/comments-reconciliation/GoldenCommentsReconciliationEntrypoint.test.ts
+ M apps/api/src/infrastructure/automation/CaptureInboxCoordinator.ts
+ M apps/api/src/infrastructure/automation/DesktopHandoffService.ts
+ M apps/api/src/infrastructure/automation/ToolSessionWorkflowService.ts
+ M apps/api/src/infrastructure/document-intelligence/CrossDocumentConsistencyService.test.ts
+ M apps/api/src/infrastructure/document-intelligence/DocumentIntelligenceStore.test.ts
+ M apps/api/src/infrastructure/document-intelligence/DocumentProcessingWorker.test.ts
+ M apps/api/src/infrastructure/document-intelligence/DocumentRoutingProposalService.test.ts
+ M apps/api/src/infrastructure/document-intelligence/DocumentStoreBackupRestore.test.ts
+ M apps/api/src/infrastructure/document-intelligence/LuminaireDatasheetVerificationService.test.ts
+ M apps/api/src/infrastructure/document-intelligence/LuminaireDatasheetVerificationService.ts
+ M apps/api/src/infrastructure/imports/ImportApplyService.ts
+ M apps/api/src/infrastructure/imports/ImportBackupRestore.test.ts
+ M apps/api/src/infrastructure/imports/ImportInspectionService.test.ts
+ M apps/api/src/infrastructure/imports/ImportLibraryDraftApply.test.ts
+ M apps/api/src/infrastructure/imports/ImportLibraryReconciliationService.ts
+ M apps/api/src/infrastructure/imports/ImportPerformance.test.ts
+ M apps/api/src/infrastructure/imports/ImportProjectApply.test.ts
+ M apps/api/src/infrastructure/imports/ImportProjectApplyPerformance.test.ts
+ M apps/api/src/infrastructure/imports/ImportSessionStore.ts
+ M apps/api/src/infrastructure/local-ai/LocalAiReview.test.ts
+ M apps/api/src/infrastructure/luminaire-library/LuminaireLibraryService.test.ts
+ M apps/api/src/infrastructure/luminaire-library/LuminaireLibraryService.ts
+ M apps/api/src/infrastructure/luminaire-library/LuminaireLibraryStore.ts
+ M apps/api/src/infrastructure/luminaire-studio/StudioOutputService.ts
+ M apps/api/src/infrastructure/migration/registry/comments-thread-migration.test.ts
+ M apps/api/src/infrastructure/migration/registry/production-migration-registry.test.ts
+ M apps/api/src/infrastructure/migration/registry/production-migration-registry.ts
+ M apps/api/src/infrastructure/migration/registry/production-schema-validator.ts
+ M apps/api/src/infrastructure/migration/registry/versioned-migration-reality.test.ts
+ M apps/api/src/infrastructure/output-registry/CanonicalIssuePackageService.ts
+ M apps/api/src/infrastructure/output-registry/RevisionDeliverableService.ts
+ M apps/api/src/infrastructure/output-registry/canonical-artifact-files.ts
+ M apps/api/src/infrastructure/project-luminaires/ProjectLuminaireWriteStore.test.ts
+ M apps/api/src/p4b-capture-routing-reality.test.ts
+ M apps/api/src/package-reproducibility.test.ts
+ M apps/api/src/period-activity-report.test.ts
+ M apps/api/src/period-activity-report.ts
+ M apps/api/src/period-report-workbook.test.ts
+ M apps/api/src/period-report-workbook.ts
+ M apps/api/src/personal-operations-store.test.ts
+ M apps/api/src/personal-operations-store.ts
+ M apps/api/src/personal-project-edit-coordinator.test.ts
+ M apps/api/src/personal-work-session-coordinator.ts
+ M apps/api/src/personal-workspace-store.ts
+ M apps/api/src/project-service.ts
+ M apps/api/src/revision-composition-c0.test.ts
+ M apps/api/src/revision-deliverable-b0.test.ts
+ M apps/api/src/smart-import-api.test.ts
+ M apps/api/src/standalone-data-provider.ts
+ M apps/api/src/studio-workspace.test.ts
+ M apps/web-v4/src/components/automation/OutputActivity.tsx
+ M apps/web-v4/src/components/automation/ToolSessionSurface.tsx
+ M apps/web-v4/src/components/common/V4ConfirmDialog.tsx
+ M apps/web-v4/src/components/common/V4Drawer.tsx
+ M apps/web-v4/src/components/common/V4FilterSelect.tsx
+ M apps/web-v4/src/components/common/V4FloatingWorkspace.tsx
+ M apps/web-v4/src/components/common/V4RevisionIcon.tsx
+ M apps/web-v4/src/components/common/V4RouteErrorState.tsx
+ M apps/web-v4/src/components/common/V4SemanticIcons.ts
+ M apps/web-v4/src/components/common/V4SplitPane.tsx
+ M apps/web-v4/src/components/common/actionCategoryIconCatalog.ts
+ M apps/web-v4/src/components/final-ui/FinalActionsView.tsx
+ M apps/web-v4/src/components/final-ui/FinalBoqView.tsx
+ M apps/web-v4/src/components/final-ui/FinalCommentsView.tsx
+ M apps/web-v4/src/components/final-ui/FinalDashboardData.tsx
+ M apps/web-v4/src/components/final-ui/FinalDashboardView.tsx
+ M apps/web-v4/src/components/final-ui/FinalDatasheetsView.tsx
+ M apps/web-v4/src/components/final-ui/FinalLibraryView.tsx
+ M apps/web-v4/src/components/final-ui/FinalLuminairesView.tsx
+ M apps/web-v4/src/components/final-ui/FinalMeetingsView.tsx
+ M apps/web-v4/src/components/final-ui/FinalNewProjectModal.tsx
+ M apps/web-v4/src/components/final-ui/FinalPackagesView.tsx
+ M apps/web-v4/src/components/final-ui/FinalProjectSummaryView.tsx
+ M apps/web-v4/src/components/final-ui/FinalProjectsView.test.tsx
+ M apps/web-v4/src/components/final-ui/FinalProjectsView.tsx
+ M apps/web-v4/src/components/final-ui/FinalRevisionsView.tsx
+ M apps/web-v4/src/components/final-ui/FinalScheduleView.tsx
+ M apps/web-v4/src/components/final-ui/FinalScopeView.test.tsx
+ M apps/web-v4/src/components/final-ui/FinalScopeView.tsx
+ M apps/web-v4/src/components/final-ui/FinalSettingsView.tsx
+ M apps/web-v4/src/components/final-ui/FinalTechnicalCheckView.tsx
+ M apps/web-v4/src/components/final-ui/FinalWorkflowTimelineView.tsx
+ M apps/web-v4/src/components/final-ui/GlobalSidebar.tsx
+ M apps/web-v4/src/components/final-ui/ProjectHeader.tsx
+ M apps/web-v4/src/components/final-ui/ProjectSidebar.tsx
+ M apps/web-v4/src/components/final-ui/ShellData.tsx
+ M apps/web-v4/src/components/final-ui/ds/Btn.tsx
+ M apps/web-v4/src/components/final-ui/ds/SearchInput.tsx
+ M apps/web-v4/src/components/final-ui/ds/TablePrimitives.tsx
+ M apps/web-v4/src/components/final-ui/finalUi.css
+ M apps/web-v4/src/components/final-ui/tokens.ts
+ M apps/web-v4/src/components/final-ui/useFinalProjectCreation.ts
+ M apps/web-v4/src/components/interaction/V4AnchoredSurface.tsx
+ M apps/web-v4/src/components/navigation/navModel.test.ts
+ M apps/web-v4/src/components/navigation/navModel.ts
+ M apps/web-v4/src/components/outputs/V4OutputPresentationLauncher.tsx
+ M apps/web-v4/src/components/project/ProjectStorageHealth.tsx
+ M apps/web-v4/src/components/project/V4ProjectEditAction.tsx
+ M apps/web-v4/src/components/project/V4ProjectEditWorkspace.tsx
+ M apps/web-v4/src/components/project/V4ProjectStatusControl.tsx
+ M apps/web-v4/src/components/project/projectFormModel.test.ts
+ M apps/web-v4/src/components/project/projectFormModel.ts
+ M apps/web-v4/src/components/revisions/V4TargetRevisionContext.tsx
+ M apps/web-v4/src/components/shell/V4H10Contract.test.tsx
+ M apps/web-v4/src/components/shell/V4H2Contract.test.tsx
+ M apps/web-v4/src/components/sidebar/V4Sidebar.tsx
+ M apps/web-v4/src/components/sidebar/V4SidebarEdgeToggle.tsx
+ M apps/web-v4/src/components/work-session/WorkSessionProvider.tsx
+ M apps/web-v4/src/components/work-session/WorkSessionSurfaces.tsx
+ M apps/web-v4/src/date-time/businessDateTime.test.ts
+ M apps/web-v4/src/date-time/businessDateTime.ts
+ M apps/web-v4/src/pages/dashboard/LegacyDashboardPage.tsx
+ M apps/web-v4/src/pages/dashboard/dashboardViewModel.test.ts
+ M apps/web-v4/src/pages/dashboard/dashboardViewModel.ts
+ M apps/web-v4/src/pages/datasheets-images/ProjectDatasheetsImagesPage.test.tsx
+ M apps/web-v4/src/pages/datasheets-images/ProjectDatasheetsWorkspace.tsx
+ M apps/web-v4/src/pages/document-review/DocumentReviewCenterPage.tsx
+ M apps/web-v4/src/pages/imports/SmartImportCenterPage.test.tsx
+ M apps/web-v4/src/pages/imports/SmartImportCenterPage.tsx
+ M apps/web-v4/src/pages/imports/smartImportCenter.css
+ M apps/web-v4/src/pages/luminaire-library/LibraryAddToProjectDialog.tsx
+ M apps/web-v4/src/pages/luminaire-library/LibraryFacetMenu.tsx
+ M apps/web-v4/src/pages/luminaire-library/LibraryMoreFilters.tsx
+ M apps/web-v4/src/pages/luminaire-library/LibraryWorkspaceController.tsx
+ M apps/web-v4/src/pages/luminaire-library/libraryViewModel.ts
+ M apps/web-v4/src/pages/luminaire-schedule/ProjectLuminaireScheduleWorkspace.tsx
+ M apps/web-v4/src/pages/luminaire-studio/LuminaireStudioPage.tsx
+ M apps/web-v4/src/pages/new-project/LegacyNewProjectPage.tsx
+ M apps/web-v4/src/pages/project-actions/ActionDrawer.tsx
+ M apps/web-v4/src/pages/project-actions/ProjectActionsPage.test.tsx
+ M apps/web-v4/src/pages/project-actions/ProjectActionsWorkspace.tsx
+ M apps/web-v4/src/pages/project-comments/CommentDrawer.tsx
+ M apps/web-v4/src/pages/project-comments/ProjectCommentsPage.test.tsx
+ M apps/web-v4/src/pages/project-comments/ProjectCommentsWorkspace.tsx
+ M apps/web-v4/src/pages/project-comments/ReplyComposer.test.tsx
+ M apps/web-v4/src/pages/project-comments/ReplyComposer.tsx
+ M apps/web-v4/src/pages/project-comments/ThreadCard.tsx
+ M apps/web-v4/src/pages/project-comments/ThreadDetailsInspector.tsx
+ M apps/web-v4/src/pages/project-comments/ThreadReplies.tsx
+ M apps/web-v4/src/pages/project-contacts/ContactCard.tsx
+ M apps/web-v4/src/pages/project-contacts/ContactDrawer.tsx
+ M apps/web-v4/src/pages/project-contacts/FinalContactsView.tsx
+ M apps/web-v4/src/pages/project-contacts/ProjectContactsPage.test.tsx
+ M apps/web-v4/src/pages/project-contacts/ProjectContactsPage.tsx
+ M apps/web-v4/src/pages/project-files/ProjectFilesPage.test.tsx
+ M apps/web-v4/src/pages/project-files/ProjectFilesPage.tsx
+ M apps/web-v4/src/pages/project-intelligence/ProjectIntelligencePage.tsx
+ M apps/web-v4/src/pages/project-luminaires/CreateLibraryDraftDialog.tsx
+ M apps/web-v4/src/pages/project-luminaires/FromLibraryDialog.tsx
+ M apps/web-v4/src/pages/project-luminaires/LibraryUpdateDialog.tsx
+ M apps/web-v4/src/pages/project-luminaires/LuminaireEditor.tsx
+ M apps/web-v4/src/pages/project-luminaires/LuminaireImage.tsx
+ M apps/web-v4/src/pages/project-luminaires/LuminaireImportDialog.tsx
+ M apps/web-v4/src/pages/project-luminaires/LuminaireInspector.tsx
+ M apps/web-v4/src/pages/project-luminaires/ProjectLuminairesPage.test.tsx
+ M apps/web-v4/src/pages/project-luminaires/ProjectLuminairesWorkspace.tsx
+ M apps/web-v4/src/pages/project-meetings/MeetingDrawer.test.tsx
+ M apps/web-v4/src/pages/project-meetings/MeetingDrawer.tsx
+ M apps/web-v4/src/pages/project-meetings/ProjectMeetingsPage.test.tsx
+ M apps/web-v4/src/pages/project-meetings/ProjectMeetingsWorkspace.tsx
+ M apps/web-v4/src/pages/project-packages/ProjectPackagesPage.test.tsx
+ M apps/web-v4/src/pages/project-packages/ProjectPackagesWorkspace.tsx
+ M apps/web-v4/src/pages/project-packages/packagesViewModel.test.ts
+ M apps/web-v4/src/pages/project-packages/packagesViewModel.ts
+ M apps/web-v4/src/pages/project-revisions/AddDeliverableDrawer.tsx
+ M apps/web-v4/src/pages/project-revisions/DeliverableInspector.tsx
+ M apps/web-v4/src/pages/project-revisions/DeliverablesTable.tsx
+ M apps/web-v4/src/pages/project-revisions/Disclosure.tsx
+ M apps/web-v4/src/pages/project-revisions/FilterToolbar.tsx
+ M apps/web-v4/src/pages/project-revisions/GenerateOutputMenu.tsx
+ M apps/web-v4/src/pages/project-revisions/ProjectRevisionsPage.test.tsx
+ M apps/web-v4/src/pages/project-revisions/ProjectRevisionsWorkspace.tsx
+ M apps/web-v4/src/pages/project-revisions/RecoveryInspector.tsx
+ M apps/web-v4/src/pages/project-revisions/RecoveryTable.tsx
+ M apps/web-v4/src/pages/project-revisions/RevisionInspector.tsx
+ M apps/web-v4/src/pages/project-revisions/RevisionsTable.tsx
+ M apps/web-v4/src/pages/project-revisions/deliverables.css
+ M apps/web-v4/src/pages/project-scope/ProjectScopeWorkspace.tsx
+ M apps/web-v4/src/pages/project-summary/LegacyProjectSummaryPage.tsx
+ M apps/web-v4/src/pages/project-summary/ProjectSummaryPage.tsx
+ M apps/web-v4/src/pages/project-summary/projectActivityProjection.test.ts
+ M apps/web-v4/src/pages/project-summary/projectActivityProjection.ts
+ M apps/web-v4/src/pages/project-summary/projectSummaryViewModel.test.ts
+ M apps/web-v4/src/pages/project-summary/projectSummaryViewModel.ts
+ M apps/web-v4/src/pages/projects/ProjectsPage.tsx
+ M apps/web-v4/src/pages/projects/ProjectsViews.tsx
+ M apps/web-v4/src/pages/projects/ProjectsWorkspaceController.tsx
+ M apps/web-v4/src/pages/reports/ReportsPage.test.tsx
+ M apps/web-v4/src/pages/reports/ReportsPage.tsx
+ M apps/web-v4/src/pages/reports/reports.css
+ M apps/web-v4/src/pages/settings/IntegrationSettingsSection.tsx
+ M apps/web-v4/src/pages/settings/SettingsDrawers.tsx
+ M apps/web-v4/src/pages/settings/SettingsPage.test.tsx
+ M apps/web-v4/src/pages/settings/SettingsWorkspace.tsx
+ M apps/web-v4/src/pages/technical-boq/ProjectTechnicalBoqWorkspace.tsx
+ M apps/web-v4/src/pages/technical-check/DatasheetFieldConfirmation.test.tsx
+ M apps/web-v4/src/pages/technical-check/DatasheetFieldConfirmation.tsx
+ M apps/web-v4/src/pages/technical-check/ProjectTechnicalCheckPage.test.tsx
+ M apps/web-v4/src/pages/technical-check/ProjectTechnicalCheckWorkspace.tsx
+ M apps/web-v4/src/pages/technical-check/TechnicalProjectFieldEditor.test.tsx
+ M apps/web-v4/src/pages/technical-check/TechnicalProjectFieldEditor.tsx
+ M apps/web-v4/src/pages/technical-check/TechnicalVerificationWorkspace.test.tsx
+ M apps/web-v4/src/pages/technical-check/TechnicalVerificationWorkspace.tsx
+ M apps/web-v4/src/pages/technical-check/technicalCheckViewModel.ts
+ M apps/web-v4/src/pages/technical-check/technicalVerification.css
+ M apps/web-v4/src/pages/workflow-timeline/LegacyWorkflowTimelinePage.tsx
+ M apps/web-v4/src/pages/workflow-timeline/WorkflowTimelinePage.test.tsx
+ M apps/web-v4/src/pages/workflow-timeline/WorkflowTimelinePage.tsx
+ M apps/web-v4/src/pages/workflow-timeline/workflowTimelineViewModel.test.ts
+ M apps/web-v4/src/pages/workflow-timeline/workflowTimelineViewModel.ts
+ M apps/web-v4/src/router/V4Router.tsx
+ M apps/web-v4/src/styles-contract.test.ts
+ M apps/web-v4/src/styles-v4.css
+ M apps/web-v4/src/styles/v4-interactions.css
+ M apps/web-v4/src/styles/v4-polish.css
+ M apps/web-v4/src/styles/v4-primitives.css
+ M apps/web-v4/studio/bridge.js
+ M apps/web-v4/studio/workspace.css
+ M apps/web-v4/studioIntegration.ts
+ M apps/web/src/screens/personal-search.tsx
+ M desktop/external-application-bridge.cjs
+ M desktop/external-application-bridge.test.ts
+ M desktop/luminaire-asset-picker.cjs
+ M desktop/luminaire-asset-picker.test.cjs
+ M desktop/main.cjs
+ M desktop/preload.cjs
+ M eslint.config.js
+ M packages/api-client/src/client.ts
+ M packages/contracts/src/datasheet-confirmation.ts
+ M packages/contracts/src/final-project-setup.ts
+ M packages/contracts/src/final-ui.ts
+ M packages/contracts/src/imports.ts
+ M packages/contracts/src/index.ts
+ M packages/contracts/src/luminaire-library.ts
+ M packages/contracts/src/luminaire-studio.ts
+ M packages/contracts/src/personal.ts
+ M packages/domain/src/index.ts
+ M packages/domain/src/personal.ts
+ M packages/domain/src/reports.ts
+ M packages/domain/src/types.ts
+ M packages/domain/src/workload.ts
+ M tests/v4-e2e/final-ui-contacts.spec.ts
+ M tests/v4-e2e/interaction-motion.spec.ts
+ M tests/v4-e2e/owner-visual-hardening.spec.ts
+ M tests/v4-e2e/p5a-master-library.spec.ts
+ M tests/v4-e2e/p5b-smart-import.spec.ts
+ M tests/v4-e2e/p5c-datasheet-verification.spec.ts
+ M tests/v4-e2e/p5c-document-intelligence.spec.ts
+ M tests/v4-e2e/p5c-legacy-datasheet-adoption.spec.ts
+ M tests/v4-e2e/p5d-project-intelligence.spec.ts
+ M tests/v4-e2e/visual-system.spec.ts
+ M tools/luminaire-studio-v1.4.1/core.js
+ M vitest.config.ts
+?? Open-Reviewed-Workspace.cmd
+?? apps/api/src/infrastructure/document-intelligence/ProjectFieldReviewStore.ts
+?? apps/api/src/infrastructure/final-ui/ContactPresentationStore.ts
+?? apps/api/src/infrastructure/final-ui/PersonalProfileStore.test.ts
+?? apps/api/src/infrastructure/final-ui/PersonalProfileStore.ts
+?? apps/api/src/infrastructure/final-ui/ProjectDirectoryStore.test.ts
+?? apps/api/src/infrastructure/final-ui/ProjectDirectoryStore.ts
+?? apps/api/src/infrastructure/final-ui/ProjectWizardDraftStore.test.ts
+?? apps/api/src/infrastructure/final-ui/ProjectWizardDraftStore.ts
+?? apps/api/src/infrastructure/final-ui/WorkSessionAttributionStore.test.ts
+?? apps/api/src/infrastructure/final-ui/WorkSessionAttributionStore.ts
+?? apps/api/src/infrastructure/luminaire-assets/LuminaireAssetAccess.ts
+?? apps/api/src/infrastructure/migration/registry/production-v30-optional-contact-email.test.ts
+?? apps/api/src/infrastructure/migration/registry/production-v30-optional-contact-email.ts
+?? apps/api/src/infrastructure/output-registry/PackageArtifactAccess.ts
+?? apps/web-v4/src/components/common/LuminaireChoiceField.tsx
+?? apps/web-v4/src/components/common/SctIcons.tsx
+?? apps/web-v4/src/components/common/V4ActionMenu.tsx
+?? apps/web-v4/src/components/common/V4DateInput.css
+?? apps/web-v4/src/components/common/V4DateInput.tsx
+?? apps/web-v4/src/components/common/V4ResizableTable.test.tsx
+?? apps/web-v4/src/components/common/V4ResizableTable.tsx
+?? apps/web-v4/src/components/common/V4TextEditor.tsx
+?? apps/web-v4/src/components/common/useResizableGridColumns.tsx
+?? apps/web-v4/src/components/final-ui/AdaptiveScopeCard.tsx
+?? apps/web-v4/src/components/final-ui/FinalDashboardView.test.tsx
+?? apps/web-v4/src/components/final-ui/FinalNewProjectModal.test.tsx
+?? apps/web-v4/src/components/final-ui/PersonalProfileEditor.tsx
+?? apps/web-v4/src/components/final-ui/ProjectDirectoryEditor.tsx
+?? apps/web-v4/src/components/final-ui/ProjectFolderTree.tsx
+?? apps/web-v4/src/components/final-ui/ProjectScheduleTimeline.tsx
+?? apps/web-v4/src/components/final-ui/ProjectWizardHelp.tsx
+?? apps/web-v4/src/components/final-ui/WorkspaceSearch.test.tsx
+?? apps/web-v4/src/components/final-ui/WorkspaceSearch.tsx
+?? apps/web-v4/src/components/final-ui/ds/Btn.test.tsx
+?? apps/web-v4/src/components/final-ui/projectWizard.css
+?? apps/web-v4/src/components/final-ui/projectWizardReadiness.ts
+?? apps/web-v4/src/infrastructure/projectBrowseStorage.ts
+?? apps/web-v4/src/pages/dashboard/dashboardProjectFilters.ts
+?? apps/web-v4/src/pages/imports/ImportLibraryComparison.tsx
+?? apps/web-v4/src/pages/luminaire-studio/StudioRevisionDialog.test.tsx
+?? apps/web-v4/src/pages/luminaire-studio/StudioRevisionDialog.tsx
+?? apps/web-v4/src/pages/project-actions/ActionDetailsEditor.tsx
+?? apps/web-v4/src/pages/project-comments/DraftAttachments.tsx
+?? apps/web-v4/src/pages/project-comments/ProjectDocumentPicker.tsx
+?? apps/web-v4/src/pages/project-comments/ReplyEditor.test.tsx
+?? apps/web-v4/src/pages/project-comments/ReplyEditor.tsx
+?? apps/web-v4/src/pages/project-contacts/ProjectContactPicker.tsx
+?? apps/web-v4/src/pages/project-luminaires/BulkLuminaireEditor.test.tsx
+?? apps/web-v4/src/pages/project-luminaires/BulkLuminaireEditor.tsx
+?? apps/web-v4/src/pages/project-luminaires/FromLibraryDialog.test.tsx
+?? apps/web-v4/src/pages/project-meetings/AddMeetingNote.tsx
+?? apps/web-v4/src/pages/project-revisions/AddDeliverableDrawer.test.tsx
+?? apps/web-v4/src/pages/project-scope/ScopeRequirementsEditor.tsx
+?? apps/web-v4/src/pages/project-summary/activityPresentation.ts
+?? apps/web-v4/src/pages/project-summary/summaryStageDetails.ts
+?? apps/web-v4/src/pages/reports/PortfolioSnapshot.tsx
+?? apps/web-v4/src/pages/reports/ReportCharts.tsx
+?? apps/web-v4/src/pages/reports/ReportDetailPane.test.tsx
+?? apps/web-v4/src/pages/reports/ReportDetailPane.tsx
+?? apps/web-v4/studio/output-controls.js
+?? apps/web-v4/studio/systems.js
+?? desktop/luminaire-asset-handoff.test.cjs
+?? desktop/remembered-open-dialog.cjs
+?? desktop/remembered-open-dialog.test.cjs
+?? desktop/studio-grouping.test.cjs
+?? docs/approved-ui-agreement-audit.md
+?? docs/approved-ui-completion.md
+?? docs/approved-ui-validation-evidence.md
+?? docs/migration-contract-v29-v30.md
+?? docs/ui-audit-repairs-20260912.md
+?? docs/ux-flow-improvements-20260912.md
+?? output/agreement-recheck-20260912/actions-kpi-tests.mjs
+?? output/agreement-recheck-20260912/actions-tests.json
+?? output/agreement-recheck-20260912/add-capture-package-tests.cjs
+?? output/agreement-recheck-20260912/add-library-tests.cjs
+?? output/agreement-recheck-20260912/add-package-tests.cjs
+?? output/agreement-recheck-20260912/apply-date-control.mjs
+?? output/agreement-recheck-20260912/autocad-print.cjs
+?? output/agreement-recheck-20260912/autocad-print/disposable-layout.pdf
+?? output/agreement-recheck-20260912/autocad-print/disposable-layout.png
+?? output/agreement-recheck-20260912/autocad-print/print.scr
+?? output/agreement-recheck-20260912/autocad-print/result.json
+?? output/agreement-recheck-20260912/baseline.json
+?? output/agreement-recheck-20260912/before/ActionDrawer.tsx
+?? output/agreement-recheck-20260912/before/CommentDrawer.tsx
+?? output/agreement-recheck-20260912/before/FinalActionsView.tsx
+?? output/agreement-recheck-20260912/before/FinalDashboardData.tsx
+?? output/agreement-recheck-20260912/before/FinalDashboardView.test.tsx
+?? output/agreement-recheck-20260912/before/FinalDashboardView.tsx
+?? output/agreement-recheck-20260912/before/FinalMeetingsView.tsx
+?? output/agreement-recheck-20260912/before/FinalNewProjectModal.tsx
+?? output/agreement-recheck-20260912/before/FinalProjectSummaryView.tsx
+?? output/agreement-recheck-20260912/before/FinalProjectsView.tsx
+?? output/agreement-recheck-20260912/before/FinalWorkflowTimelineView.tsx
+?? output/agreement-recheck-20260912/before/MeetingDrawer.tsx
+?? output/agreement-recheck-20260912/before/ProjectActionsPage.test.tsx
+?? output/agreement-recheck-20260912/before/ProjectActionsWorkspace.tsx
+?? output/agreement-recheck-20260912/before/ProjectDirectoryEditor.tsx
+?? output/agreement-recheck-20260912/before/ProjectMeetingsWorkspace.tsx
+?? output/agreement-recheck-20260912/before/ProjectSummaryPage.tsx
+?? output/agreement-recheck-20260912/before/ReportsPage.tsx
+?? output/agreement-recheck-20260912/before/V4AnchoredSurface.tsx
+?? output/agreement-recheck-20260912/before/V4ConfirmDialog.tsx
+?? output/agreement-recheck-20260912/before/V4ProjectEditWorkspace.tsx
+?? output/agreement-recheck-20260912/before/WorkflowTimelinePage.tsx
+?? output/agreement-recheck-20260912/before/contracts-index.ts
+?? output/agreement-recheck-20260912/before/project-service.ts
+?? output/agreement-recheck-20260912/before/projectActivityProjection.ts
+?? output/agreement-recheck-20260912/before/projectFormModel.ts
+?? output/agreement-recheck-20260912/before/projectSummaryViewModel.ts
+?? output/agreement-recheck-20260912/before/useFinalProjectCreation.ts
+?? output/agreement-recheck-20260912/before/workflowTimelineViewModel.ts
+?? output/agreement-recheck-20260912/build-focused-package-test.cjs
+?? output/agreement-recheck-20260912/changed-file-list.txt
+?? output/agreement-recheck-20260912/changed-files.cjs
+?? output/agreement-recheck-20260912/changed-since-baseline.json
+?? output/agreement-recheck-20260912/check-packaged.mjs
+?? output/agreement-recheck-20260912/comments-tests.json
+?? output/agreement-recheck-20260912/completion-report.html
+?? output/agreement-recheck-20260912/completion-report.md
+?? output/agreement-recheck-20260912/contacts-comments-tests.json
+?? output/agreement-recheck-20260912/coverage.json
+?? output/agreement-recheck-20260912/create-wizard-check.mjs
+?? output/agreement-recheck-20260912/dashboard-electron/01-idle.png
+?? output/agreement-recheck-20260912/dashboard-electron/02-kpi-projects-filter.png
+?? output/agreement-recheck-20260912/dashboard-electron/03-blocking-group.png
+?? output/agreement-recheck-20260912/dashboard-electron/04-operations-filter.png
+?? output/agreement-recheck-20260912/dashboard-electron/05-session-details.png
+?? output/agreement-recheck-20260912/dashboard-electron/06-attention-dark.png
+?? output/agreement-recheck-20260912/dashboard-electron/06-attention-light.png
+?? output/agreement-recheck-20260912/dashboard-electron/07-project-actions-menu.png
+?? output/agreement-recheck-20260912/dashboard-electron/08-board-sort-menu.png
+?? output/agreement-recheck-20260912/dashboard-electron/results.json
+?? output/agreement-recheck-20260912/dashboard-tests.json
+?? output/agreement-recheck-20260912/datasheet-tests.json
+?? output/agreement-recheck-20260912/extend-native-datasheets.mjs
+?? output/agreement-recheck-20260912/files-package-api-tests.json
+?? output/agreement-recheck-20260912/files-ui-tests.json
+?? output/agreement-recheck-20260912/final-api-clean.json
+?? output/agreement-recheck-20260912/final-api-domain-tests.json
+?? output/agreement-recheck-20260912/final-api-retry.json
+?? output/agreement-recheck-20260912/final-api-source.json
+?? output/agreement-recheck-20260912/final-desktop-tests.txt
+?? output/agreement-recheck-20260912/final-eslint.json
+?? output/agreement-recheck-20260912/final-last-delta-tests.json
+?? output/agreement-recheck-20260912/final-legacy-components.json
+?? output/agreement-recheck-20260912/final-manifest-validation.txt
+?? output/agreement-recheck-20260912/final-meetings-retry.json
+?? output/agreement-recheck-20260912/final-personal-e2e.json
+?? output/agreement-recheck-20260912/final-production-build.txt
+?? output/agreement-recheck-20260912/final-recovery-tests.json
+?? output/agreement-recheck-20260912/final-revision-menu-tests.json
+?? output/agreement-recheck-20260912/final-source-check.mjs
+?? output/agreement-recheck-20260912/final-source-validation.json
+?? output/agreement-recheck-20260912/final-team-e2e.json
+?? output/agreement-recheck-20260912/final-typecheck.json
+?? output/agreement-recheck-20260912/final-typecheck.txt
+?? output/agreement-recheck-20260912/final-v4-all-pass.json
+?? output/agreement-recheck-20260912/final-v4-build.txt
+?? output/agreement-recheck-20260912/final-v4-e2e-clean.json
+?? output/agreement-recheck-20260912/final-v4-e2e-retry.json
+?? output/agreement-recheck-20260912/final-v4-e2e-retry2.json
+?? output/agreement-recheck-20260912/final-v4-e2e.json
+?? output/agreement-recheck-20260912/final-v4-isolation-retry.json
+?? output/agreement-recheck-20260912/final-v4-tests-clean.json
+?? output/agreement-recheck-20260912/final-v4-tests.json
+?? output/agreement-recheck-20260912/final-v4-typecheck.txt
+?? output/agreement-recheck-20260912/finalize-report.mjs
+?? output/agreement-recheck-20260912/fix-actions.mjs
+?? output/agreement-recheck-20260912/fix-comments-inline.mjs
+?? output/agreement-recheck-20260912/fix-comments-linking.mjs
+?? output/agreement-recheck-20260912/fix-contact-view.mjs
+?? output/agreement-recheck-20260912/fix-dashboard.mjs
+?? output/agreement-recheck-20260912/fix-datasheets.mjs
+?? output/agreement-recheck-20260912/fix-files-proof.cjs
+?? output/agreement-recheck-20260912/fix-files-tail.cjs
+?? output/agreement-recheck-20260912/fix-files-tools.cjs
+?? output/agreement-recheck-20260912/fix-final-packages.cjs
+?? output/agreement-recheck-20260912/fix-final-revisions.mjs
+?? output/agreement-recheck-20260912/fix-imports.cjs
+?? output/agreement-recheck-20260912/fix-library-cascade.cjs
+?? output/agreement-recheck-20260912/fix-library-data.cjs
+?? output/agreement-recheck-20260912/fix-library-locators.cjs
+?? output/agreement-recheck-20260912/fix-library-ui.cjs
+?? output/agreement-recheck-20260912/fix-luminaire-editor.mjs
+?? output/agreement-recheck-20260912/fix-luminaire-library-bulk.mjs
+?? output/agreement-recheck-20260912/fix-luminaire-view.mjs
+?? output/agreement-recheck-20260912/fix-meetings.mjs
+?? output/agreement-recheck-20260912/fix-new-project.mjs
+?? output/agreement-recheck-20260912/fix-package-download-native.cjs
+?? output/agreement-recheck-20260912/fix-package-manifest.cjs
+?? output/agreement-recheck-20260912/fix-package-native.cjs
+?? output/agreement-recheck-20260912/fix-package-selection.cjs
+?? output/agreement-recheck-20260912/fix-package-visual-test.cjs
+?? output/agreement-recheck-20260912/fix-package-workspace.cjs
+?? output/agreement-recheck-20260912/fix-report-exports.cjs
+?? output/agreement-recheck-20260912/fix-reports.cjs
+?? output/agreement-recheck-20260912/fix-revision-inspector.mjs
+?? output/agreement-recheck-20260912/fix-revisions.mjs
+?? output/agreement-recheck-20260912/fix-semantic-icons.mjs
+?? output/agreement-recheck-20260912/fix-session-label.cjs
+?? output/agreement-recheck-20260912/fix-settings26-guards.cjs
+?? output/agreement-recheck-20260912/fix-settings26.cjs
+?? output/agreement-recheck-20260912/fix-summary.mjs
+?? output/agreement-recheck-20260912/fix-technical-check.mjs
+?? output/agreement-recheck-20260912/fix-timeline.mjs
+?? output/agreement-recheck-20260912/format-results.json
+?? output/agreement-recheck-20260912/from-library-tests.json
+?? output/agreement-recheck-20260912/icons/icons.cjs
+?? output/agreement-recheck-20260912/icons/preview.html
+?? output/agreement-recheck-20260912/icons/selected-icons.png
+?? output/agreement-recheck-20260912/import-api-tests.json
+?? output/agreement-recheck-20260912/import-apply-tests.json
+?? output/agreement-recheck-20260912/import-ui-tests.json
+?? output/agreement-recheck-20260912/ledger-23-24.cjs
+?? output/agreement-recheck-20260912/library-api-tests.json
+?? output/agreement-recheck-20260912/library-ui-tests.json
+?? output/agreement-recheck-20260912/luminaire-contacts-tests.json
+?? output/agreement-recheck-20260912/meetings-actions-tests.json
+?? output/agreement-recheck-20260912/native-packages-fragment.txt
+?? output/agreement-recheck-20260912/native-revisions-fragment.txt
+?? output/agreement-recheck-20260912/new-project-electron-dark/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_3e329a2b-b4c5-4b4e-82ca-91b7a16d1eba.pdf
+?? output/agreement-recheck-20260912/new-project-electron-dark/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_8ab2f39e-2956-4b77-bb9f-ac24dd91a113.xlsx
+?? output/agreement-recheck-20260912/new-project-electron-dark/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_d0376802-1e76-437b-9162-0946c9be1730.xlsx
+?? output/agreement-recheck-20260912/new-project-electron-dark/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_ea6d1cce-b7aa-4586-84e9-9fee7061e2ee.pdf
+?? output/agreement-recheck-20260912/new-project-electron-dark/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_bb18315e-0c6d-41eb-b665-abd7a5fbed67.xlsx
+?? output/agreement-recheck-20260912/new-project-electron-dark/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_f75403af-1d5e-4ceb-8789-a6017d955cae.pdf
+?? output/agreement-recheck-20260912/new-project-electron-dark/01-code-example.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/02-information.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/03-scope-empty-selections.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/04-small-milestone.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/05-folder-preview.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/06-templates.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/07-review.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/08-created-summary.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/09-edit-dirty-guard.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/10-timeline-details.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/11-timeline.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/12-action-save-guard.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/13-actions.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/14-meetings.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/15-scope.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/16-comments.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/17-contacts.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/18-luminaires-bulk.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/19-luminaire-editor.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/20-luminaires.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/21-datasheets.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/22-technical-review.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/23-lighting-systems.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/24-system-accessories.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/25-output-generation.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/26-output-studio.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/27-specifications-generation.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/28-specifications.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/29-revision-add-files.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/30-revision-frozen.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/31-revisions.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/32-package-builder.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/33-package-file.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/34-package-preview.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/35-package-issued.png
+?? output/agreement-recheck-20260912/new-project-electron-dark/Friday issued ZIP.zip
+?? output/agreement-recheck-20260912/new-project-electron-dark/Friday saved draft.zip
+?? output/agreement-recheck-20260912/new-project-electron-dark/results.json
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_22bb1d80-1740-449c-8aaa-dfa779ee84b4.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_4e940f4f-7c41-4a6f-bc9a-7585985a5e4c.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_565d9b99-52aa-45a2-8102-a61200d73dc1.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_7fd2df8a-b976-4d65-b085-a49678c75dee.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_844a2744-f249-4d39-b2a4-7c48b08a1088.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_871c6168-b7ec-4d75-9d26-bdcc69cb2bdf.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_c7a255f7-aed9-42cb-8ec0-2bdd826c0de7.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_c7a255f7-aed9-42cb-8ec0-2bdd826c0de7.png
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_cdc69cdc-9fa4-4048-9aba-b819f81efcb6.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_d62c3d42-a3a5-4329-88b9-bc78e3fd7950.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_d62c3d42-a3a5-4329-88b9-bc78e3fd7950.png
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_f4781436-2d07-4e10-99d6-41ac2c25764c.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_05b37c21-3b84-4945-8f72-6d013b46a03e.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_0c4abcc7-1470-4f2e-a013-91628bab1446.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_13f102c2-0ce7-479b-959f-e77a383f88ad.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_4e8c6834-1b23-4892-9e4c-2f1faa417811.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_4e8c6834-1b23-4892-9e4c-2f1faa417811.png
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_5762e108-695e-4285-b090-346e517ca090.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_89944e56-9ca6-4890-9e3c-a33153df770f.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_9b5bc927-182a-4ab2-8d38-c82cf8d1eefd.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_bcf3a5de-aaab-472a-9121-42058f5662ca.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_f7ee3bdb-db2a-4d00-af92-35ae7fcb09bb.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_fcadb0d4-4acf-4d6e-8cba-7bab5fb79180.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_fcadb0d4-4acf-4d6e-8cba-7bab5fb79180.png
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_1137a5f2-a077-4c9b-a823-804ceffa60a7.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_3ce1ed83-7f04-4082-9b08-0a062a932bc9.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_4d87d3fa-b2e3-44ea-b6aa-438037d45b44.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_4d87d3fa-b2e3-44ea-b6aa-438037d45b44.png
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_864e2d32-dc52-4ee5-9c4d-dc1ed4857fe4.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_9cce4888-cf2e-4df2-933e-03d71aabbdd1.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_cab38d8b-2ec6-4062-ac1b-5bca14f79eea.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_d68e9466-d7d8-4378-9844-e8050a51cec8.pdf
+?? output/agreement-recheck-20260912/new-project-electron/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_e3848327-ed14-43ac-81e8-752f39ebccbb.pdf
+?? output/agreement-recheck-20260912/new-project-electron/01-code-example.png
+?? output/agreement-recheck-20260912/new-project-electron/02-information.png
+?? output/agreement-recheck-20260912/new-project-electron/03-scope-empty-selections.png
+?? output/agreement-recheck-20260912/new-project-electron/04-small-milestone.png
+?? output/agreement-recheck-20260912/new-project-electron/05-folder-preview.png
+?? output/agreement-recheck-20260912/new-project-electron/06-templates.png
+?? output/agreement-recheck-20260912/new-project-electron/07-review.png
+?? output/agreement-recheck-20260912/new-project-electron/08-created-summary.png
+?? output/agreement-recheck-20260912/new-project-electron/09-edit-dirty-guard.png
+?? output/agreement-recheck-20260912/new-project-electron/10-timeline-details.png
+?? output/agreement-recheck-20260912/new-project-electron/11-timeline.png
+?? output/agreement-recheck-20260912/new-project-electron/12-action-save-guard.png
+?? output/agreement-recheck-20260912/new-project-electron/13-actions.png
+?? output/agreement-recheck-20260912/new-project-electron/14-meetings.png
+?? output/agreement-recheck-20260912/new-project-electron/15-scope.png
+?? output/agreement-recheck-20260912/new-project-electron/16-comments.png
+?? output/agreement-recheck-20260912/new-project-electron/17-contacts.png
+?? output/agreement-recheck-20260912/new-project-electron/18-luminaires-bulk.png
+?? output/agreement-recheck-20260912/new-project-electron/19-luminaire-editor.png
+?? output/agreement-recheck-20260912/new-project-electron/20-luminaires.png
+?? output/agreement-recheck-20260912/new-project-electron/21-datasheets.png
+?? output/agreement-recheck-20260912/new-project-electron/22-technical-review.png
+?? output/agreement-recheck-20260912/new-project-electron/23-lighting-systems.png
+?? output/agreement-recheck-20260912/new-project-electron/24-system-accessories.png
+?? output/agreement-recheck-20260912/new-project-electron/25-output-generation.png
+?? output/agreement-recheck-20260912/new-project-electron/26-output-studio.png
+?? output/agreement-recheck-20260912/new-project-electron/27-specifications-generation.png
+?? output/agreement-recheck-20260912/new-project-electron/28-specifications.png
+?? output/agreement-recheck-20260912/new-project-electron/29-revision-add-files.png
+?? output/agreement-recheck-20260912/new-project-electron/30-revision-frozen.png
+?? output/agreement-recheck-20260912/new-project-electron/31-revisions.png
+?? output/agreement-recheck-20260912/new-project-electron/32-package-builder.png
+?? output/agreement-recheck-20260912/new-project-electron/33-package-file.png
+?? output/agreement-recheck-20260912/new-project-electron/34-package-preview.png
+?? output/agreement-recheck-20260912/new-project-electron/35-package-issued.png
+?? output/agreement-recheck-20260912/new-project-electron/36-working-file-float.png
+?? output/agreement-recheck-20260912/new-project-electron/37-working-file-details.png
+?? output/agreement-recheck-20260912/new-project-electron/38-tool-session-float.png
+?? output/agreement-recheck-20260912/new-project-electron/39-autocad-pdf-captured.png
+?? output/agreement-recheck-20260912/new-project-electron/40-library-manufacturer.png
+?? output/agreement-recheck-20260912/new-project-electron/41-library-empty-family.png
+?? output/agreement-recheck-20260912/new-project-electron/42-library-compare.png
+?? output/agreement-recheck-20260912/new-project-electron/43-library-selection.png
+?? output/agreement-recheck-20260912/new-project-electron/44-import-cancel.png
+?? output/agreement-recheck-20260912/new-project-electron/45-import-comparison.png
+?? output/agreement-recheck-20260912/new-project-electron/46-import-decisions.png
+?? output/agreement-recheck-20260912/new-project-electron/47-import-applied.png
+?? output/agreement-recheck-20260912/new-project-electron/48-report-overview.png
+?? output/agreement-recheck-20260912/new-project-electron/49-report-deliverables.png
+?? output/agreement-recheck-20260912/new-project-electron/49-report-follow-up.png
+?? output/agreement-recheck-20260912/new-project-electron/49-report-technical.png
+?? output/agreement-recheck-20260912/new-project-electron/49-report-workload.png
+?? output/agreement-recheck-20260912/new-project-electron/50-settings-folder-preview.png
+?? output/agreement-recheck-20260912/new-project-electron/51-settings-folder-editor.png
+?? output/agreement-recheck-20260912/new-project-electron/52-settings-sales-editor.png
+?? output/agreement-recheck-20260912/new-project-electron/53-settings-dark.png
+?? output/agreement-recheck-20260912/new-project-electron/54-settings-integrations-dark.png
+?? output/agreement-recheck-20260912/new-project-electron/55-settings-light.png
+?? output/agreement-recheck-20260912/new-project-electron/56-profile-initials-dark.png
+?? output/agreement-recheck-20260912/new-project-electron/57-profile-photo-dark.png
+?? output/agreement-recheck-20260912/new-project-electron/58-profile-project-sidebar.png
+?? output/agreement-recheck-20260912/new-project-electron/59-final-dark.png
+?? output/agreement-recheck-20260912/new-project-electron/59-final-light.png
+?? output/agreement-recheck-20260912/new-project-electron/59-final-system.png
+?? output/agreement-recheck-20260912/new-project-electron/Friday filtered report.pdf
+?? output/agreement-recheck-20260912/new-project-electron/Friday filtered report.xlsx
+?? output/agreement-recheck-20260912/new-project-electron/Friday issued ZIP.zip
+?? output/agreement-recheck-20260912/new-project-electron/Friday saved draft.zip
+?? output/agreement-recheck-20260912/new-project-electron/failure.png
+?? output/agreement-recheck-20260912/new-project-electron/files-failure.png
+?? output/agreement-recheck-20260912/new-project-electron/files-results.json
+?? output/agreement-recheck-20260912/new-project-electron/followups-failure.png
+?? output/agreement-recheck-20260912/new-project-electron/followups-results.json
+?? output/agreement-recheck-20260912/new-project-electron/import-failure.png
+?? output/agreement-recheck-20260912/new-project-electron/import-results.json
+?? output/agreement-recheck-20260912/new-project-electron/library-failure.png
+?? output/agreement-recheck-20260912/new-project-electron/library-results.json
+?? output/agreement-recheck-20260912/new-project-electron/package-results.json
+?? output/agreement-recheck-20260912/new-project-electron/package-visual-results.json
+?? output/agreement-recheck-20260912/new-project-electron/profile-results.json
+?? output/agreement-recheck-20260912/new-project-electron/report-pdf-first.png
+?? output/agreement-recheck-20260912/new-project-electron/reports-failure.png
+?? output/agreement-recheck-20260912/new-project-electron/reports-results.json
+?? output/agreement-recheck-20260912/new-project-electron/results.json
+?? output/agreement-recheck-20260912/new-project-electron/settings-results.json
+?? output/agreement-recheck-20260912/new-project-tests.json
+?? output/agreement-recheck-20260912/package-api-tests.json
+?? output/agreement-recheck-20260912/package-provenance.json
+?? output/agreement-recheck-20260912/package-ui-tests.json
+?? output/agreement-recheck-20260912/packaged-failure.png
+?? output/agreement-recheck-20260912/packaged-files-dark.png
+?? output/agreement-recheck-20260912/packaged-files-light.png
+?? output/agreement-recheck-20260912/packaged-results.json
+?? output/agreement-recheck-20260912/packaged-revision-report.csv
+?? output/agreement-recheck-20260912/packaged-revisions.png
+?? output/agreement-recheck-20260912/prepare-package-native.cjs
+?? output/agreement-recheck-20260912/profile-api-tests.json
+?? output/agreement-recheck-20260912/project-edit-api-tests.json
+?? output/agreement-recheck-20260912/projects-tests.json
+?? output/agreement-recheck-20260912/record-actions-meetings.mjs
+?? output/agreement-recheck-20260912/record-contacts-luminaires.mjs
+?? output/agreement-recheck-20260912/record-datasheets.mjs
+?? output/agreement-recheck-20260912/record-new-project.mjs
+?? output/agreement-recheck-20260912/record-packages-files.cjs
+?? output/agreement-recheck-20260912/record-revisions.cjs
+?? output/agreement-recheck-20260912/record-scope-comments.mjs
+?? output/agreement-recheck-20260912/record-summary-timeline.mjs
+?? output/agreement-recheck-20260912/record-systems.mjs
+?? output/agreement-recheck-20260912/record-technical-check.mjs
+?? output/agreement-recheck-20260912/report-preview.png
+?? output/agreement-recheck-20260912/report-validation.json
+?? output/agreement-recheck-20260912/reports-api-tests.json
+?? output/agreement-recheck-20260912/reports-ui-tests.json
+?? output/agreement-recheck-20260912/requirements-before-final.json
+?? output/agreement-recheck-20260912/requirements.json
+?? output/agreement-recheck-20260912/revision-api-tests.json
+?? output/agreement-recheck-20260912/revision-tests.json
+?? output/agreement-recheck-20260912/scope-api-tests.json
+?? output/agreement-recheck-20260912/scope-contact-api-tests.json
+?? output/agreement-recheck-20260912/scope-package-native.cjs
+?? output/agreement-recheck-20260912/scope-tests.json
+?? output/agreement-recheck-20260912/settings-ui-tests.json
+?? output/agreement-recheck-20260912/source-current-provenance.json
+?? output/agreement-recheck-20260912/start.mjs
+?? output/agreement-recheck-20260912/studio-api-tests.json
+?? output/agreement-recheck-20260912/studio-dialog-tests.json
+?? output/agreement-recheck-20260912/summary-followup-tests.json
+?? output/agreement-recheck-20260912/summary-tests.json
+?? output/agreement-recheck-20260912/summary-wizard-tests.json
+?? output/agreement-recheck-20260912/technical-api-tests.json
+?? output/agreement-recheck-20260912/technical-final-tests.json
+?? output/agreement-recheck-20260912/technical-tests.json
+?? output/agreement-recheck-20260912/timeline-wizard-tests.json
+?? output/agreement-recheck-20260912/update-coverage.mjs
+?? output/agreement-recheck-20260912/update-datasheet-tests.mjs
+?? output/agreement-recheck-20260912/update-luminaire-contact-tests.mjs
+?? output/agreement-recheck-20260912/update-package-tests.cjs
+?? output/agreement-recheck-20260912/update-revision-tests.cjs
+?? output/agreement-recheck-20260912/verification-summary.json
+?? output/agreement-recheck-20260912/verify-final-source.mjs
+?? output/agreement-recheck-20260912/verify-provenance.mjs
+?? output/agreement-recheck-20260912/verify-report.mjs
+?? output/conversation-2026-09-11-1105-2023.zip
+?? output/conversation-report-20260911-1105-2023/README.txt
+?? output/conversation-report-20260911-1105-2023/archive-manifest.json
+?? output/conversation-report-20260911-1105-2023/assets/image-001.png
+?? output/conversation-report-20260911-1105-2023/assets/image-002.png
+?? output/conversation-report-20260911-1105-2023/assets/image-003.png
+?? output/conversation-report-20260911-1105-2023/assets/image-004.png
+?? output/conversation-report-20260911-1105-2023/assets/image-005.png
+?? output/conversation-report-20260911-1105-2023/assets/image-006.png
+?? output/conversation-report-20260911-1105-2023/assets/image-007.png
+?? output/conversation-report-20260911-1105-2023/assets/image-008.png
+?? output/conversation-report-20260911-1105-2023/assets/image-009.png
+?? output/conversation-report-20260911-1105-2023/assets/image-010.png
+?? output/conversation-report-20260911-1105-2023/assets/image-011.png
+?? output/conversation-report-20260911-1105-2023/assets/image-012.png
+?? output/conversation-report-20260911-1105-2023/assets/image-013.png
+?? output/conversation-report-20260911-1105-2023/assets/image-014.png
+?? output/conversation-report-20260911-1105-2023/assets/image-015.png
+?? output/conversation-report-20260911-1105-2023/assets/image-016.png
+?? output/conversation-report-20260911-1105-2023/assets/image-017.png
+?? output/conversation-report-20260911-1105-2023/assets/image-018.png
+?? output/conversation-report-20260911-1105-2023/assets/image-019.png
+?? output/conversation-report-20260911-1105-2023/assets/image-020.png
+?? output/conversation-report-20260911-1105-2023/assets/image-021.png
+?? output/conversation-report-20260911-1105-2023/assets/image-022.png
+?? output/conversation-report-20260911-1105-2023/assets/image-023.png
+?? output/conversation-report-20260911-1105-2023/assets/image-024.png
+?? output/conversation-report-20260911-1105-2023/assets/image-025.png
+?? output/conversation-report-20260911-1105-2023/assets/image-026.png
+?? output/conversation-report-20260911-1105-2023/assets/image-027.png
+?? output/conversation-report-20260911-1105-2023/assets/image-028.png
+?? output/conversation-report-20260911-1105-2023/assets/image-029.png
+?? output/conversation-report-20260911-1105-2023/assets/image-030.png
+?? output/conversation-report-20260911-1105-2023/assets/image-031.png
+?? output/conversation-report-20260911-1105-2023/assets/image-032.png
+?? output/conversation-report-20260911-1105-2023/assets/image-033.png
+?? output/conversation-report-20260911-1105-2023/assets/image-034.png
+?? output/conversation-report-20260911-1105-2023/assets/image-035.png
+?? output/conversation-report-20260911-1105-2023/assets/image-036.png
+?? output/conversation-report-20260911-1105-2023/assets/image-037.png
+?? output/conversation-report-20260911-1105-2023/assets/image-038.png
+?? output/conversation-report-20260911-1105-2023/assets/image-039.png
+?? output/conversation-report-20260911-1105-2023/assets/image-040.png
+?? output/conversation-report-20260911-1105-2023/assets/image-041.png
+?? output/conversation-report-20260911-1105-2023/assets/image-042.png
+?? output/conversation-report-20260911-1105-2023/assets/image-043.png
+?? output/conversation-report-20260911-1105-2023/assets/image-044.png
+?? output/conversation-report-20260911-1105-2023/assets/image-045.png
+?? output/conversation-report-20260911-1105-2023/assets/image-046.png
+?? output/conversation-report-20260911-1105-2023/assets/image-047.png
+?? output/conversation-report-20260911-1105-2023/assets/image-048.png
+?? output/conversation-report-20260911-1105-2023/assets/image-049.png
+?? output/conversation-report-20260911-1105-2023/assets/image-050.png
+?? output/conversation-report-20260911-1105-2023/assets/image-051.png
+?? output/conversation-report-20260911-1105-2023/assets/image-052.png
+?? output/conversation-report-20260911-1105-2023/assets/image-053.png
+?? output/conversation-report-20260911-1105-2023/assets/image-054.png
+?? output/conversation-report-20260911-1105-2023/assets/image-055.png
+?? output/conversation-report-20260911-1105-2023/assets/image-056.png
+?? output/conversation-report-20260911-1105-2023/assets/image-057.png
+?? output/conversation-report-20260911-1105-2023/assets/image-058.png
+?? output/conversation-report-20260911-1105-2023/assets/image-059.png
+?? output/conversation-report-20260911-1105-2023/assets/image-060.png
+?? output/conversation-report-20260911-1105-2023/assets/image-061.png
+?? output/conversation-report-20260911-1105-2023/assets/image-062.png
+?? output/conversation-report-20260911-1105-2023/assets/image-063.png
+?? output/conversation-report-20260911-1105-2023/assets/image-064.png
+?? output/conversation-report-20260911-1105-2023/assets/image-065.png
+?? output/conversation-report-20260911-1105-2023/assets/image-066.png
+?? output/conversation-report-20260911-1105-2023/assets/image-067.png
+?? output/conversation-report-20260911-1105-2023/assets/image-068.png
+?? output/conversation-report-20260911-1105-2023/assets/image-069.png
+?? output/conversation-report-20260911-1105-2023/assets/image-070.png
+?? output/conversation-report-20260911-1105-2023/assets/image-071.png
+?? output/conversation-report-20260911-1105-2023/assets/image-072.png
+?? output/conversation-report-20260911-1105-2023/assets/image-073.png
+?? output/conversation-report-20260911-1105-2023/assets/image-074.png
+?? output/conversation-report-20260911-1105-2023/assets/image-075.png
+?? output/conversation-report-20260911-1105-2023/assets/image-076.png
+?? output/conversation-report-20260911-1105-2023/assets/image-077.png
+?? output/conversation-report-20260911-1105-2023/assets/image-078.png
+?? output/conversation-report-20260911-1105-2023/assets/image-079.png
+?? output/conversation-report-20260911-1105-2023/assets/image-080.png
+?? output/conversation-report-20260911-1105-2023/assets/image-081.png
+?? output/conversation-report-20260911-1105-2023/assets/image-082.png
+?? output/conversation-report-20260911-1105-2023/assets/image-083.png
+?? output/conversation-report-20260911-1105-2023/assets/image-084.png
+?? output/conversation-report-20260911-1105-2023/assets/image-085.png
+?? output/conversation-report-20260911-1105-2023/assets/image-086.png
+?? output/conversation-report-20260911-1105-2023/assets/image-087.png
+?? output/conversation-report-20260911-1105-2023/assets/image-088.png
+?? output/conversation-report-20260911-1105-2023/assets/image-089.png
+?? output/conversation-report-20260911-1105-2023/assets/image-090.png
+?? output/conversation-report-20260911-1105-2023/assets/image-091.png
+?? output/conversation-report-20260911-1105-2023/assets/image-092.png
+?? output/conversation-report-20260911-1105-2023/assets/image-093.png
+?? output/conversation-report-20260911-1105-2023/assets/image-094.png
+?? output/conversation-report-20260911-1105-2023/assets/image-095.png
+?? output/conversation-report-20260911-1105-2023/assets/image-096.png
+?? output/conversation-report-20260911-1105-2023/assets/image-097.png
+?? output/conversation-report-20260911-1105-2023/assets/image-098.png
+?? output/conversation-report-20260911-1105-2023/assets/image-099.png
+?? output/conversation-report-20260911-1105-2023/assets/image-100.png
+?? output/conversation-report-20260911-1105-2023/assets/image-101.png
+?? output/conversation-report-20260911-1105-2023/assets/image-102.png
+?? output/conversation-report-20260911-1105-2023/assets/image-103.png
+?? output/conversation-report-20260911-1105-2023/assets/image-104.png
+?? output/conversation-report-20260911-1105-2023/assets/image-105.png
+?? output/conversation-report-20260911-1105-2023/assets/image-106.png
+?? output/conversation-report-20260911-1105-2023/assets/image-107.png
+?? output/conversation-report-20260911-1105-2023/assets/image-108.png
+?? output/conversation-report-20260911-1105-2023/assets/image-109.png
+?? output/conversation-report-20260911-1105-2023/assets/image-110.png
+?? output/conversation-report-20260911-1105-2023/assets/image-111.png
+?? output/conversation-report-20260911-1105-2023/assets/image-112.png
+?? output/conversation-report-20260911-1105-2023/assets/image-113.png
+?? output/conversation-report-20260911-1105-2023/assets/image-114.png
+?? output/conversation-report-20260911-1105-2023/assets/image-115.png
+?? output/conversation-report-20260911-1105-2023/assets/image-116.png
+?? output/conversation-report-20260911-1105-2023/assets/image-117.png
+?? output/conversation-report-20260911-1105-2023/assets/image-118.png
+?? output/conversation-report-20260911-1105-2023/assets/image-119.png
+?? output/conversation-report-20260911-1105-2023/assets/image-120.png
+?? output/conversation-report-20260911-1105-2023/assets/image-121.png
+?? output/conversation-report-20260911-1105-2023/assets/image-122.png
+?? output/conversation-report-20260911-1105-2023/assets/image-123.png
+?? output/conversation-report-20260911-1105-2023/assets/image-124.png
+?? output/conversation-report-20260911-1105-2023/assets/image-125.png
+?? output/conversation-report-20260911-1105-2023/assets/image-126.png
+?? output/conversation-report-20260911-1105-2023/assets/image-127.png
+?? output/conversation-report-20260911-1105-2023/assets/image-128.png
+?? output/conversation-report-20260911-1105-2023/assets/image-129.png
+?? output/conversation-report-20260911-1105-2023/assets/image-130.png
+?? output/conversation-report-20260911-1105-2023/assets/image-131.png
+?? output/conversation-report-20260911-1105-2023/assets/image-132.png
+?? output/conversation-report-20260911-1105-2023/assets/image-133.png
+?? output/conversation-report-20260911-1105-2023/assets/image-134.png
+?? output/conversation-report-20260911-1105-2023/assets/image-135.png
+?? output/conversation-report-20260911-1105-2023/assets/image-136.png
+?? output/conversation-report-20260911-1105-2023/assets/image-137.png
+?? output/conversation-report-20260911-1105-2023/assets/image-138.png
+?? output/conversation-report-20260911-1105-2023/assets/image-139.png
+?? output/conversation-report-20260911-1105-2023/assets/image-140.png
+?? output/conversation-report-20260911-1105-2023/assets/image-141.png
+?? output/conversation-report-20260911-1105-2023/assets/image-142.png
+?? output/conversation-report-20260911-1105-2023/assets/image-143.png
+?? output/conversation-report-20260911-1105-2023/assets/image-144.png
+?? output/conversation-report-20260911-1105-2023/assets/image-145.png
+?? output/conversation-report-20260911-1105-2023/assets/image-146.png
+?? output/conversation-report-20260911-1105-2023/assets/image-147.png
+?? output/conversation-report-20260911-1105-2023/assets/image-148.png
+?? output/conversation-report-20260911-1105-2023/assets/image-149.png
+?? output/conversation-report-20260911-1105-2023/assets/image-150.png
+?? output/conversation-report-20260911-1105-2023/assets/image-151.png
+?? output/conversation-report-20260911-1105-2023/assets/image-152.png
+?? output/conversation-report-20260911-1105-2023/assets/image-153.png
+?? output/conversation-report-20260911-1105-2023/assets/image-154.png
+?? output/conversation-report-20260911-1105-2023/assets/image-155.png
+?? output/conversation-report-20260911-1105-2023/assets/image-156.png
+?? output/conversation-report-20260911-1105-2023/assets/image-157.png
+?? output/conversation-report-20260911-1105-2023/assets/image-158.png
+?? output/conversation-report-20260911-1105-2023/assets/image-159.png
+?? output/conversation-report-20260911-1105-2023/assets/image-160.png
+?? output/conversation-report-20260911-1105-2023/assets/image-161.png
+?? output/conversation-report-20260911-1105-2023/assets/image-162.png
+?? output/conversation-report-20260911-1105-2023/assets/image-163.png
+?? output/conversation-report-20260911-1105-2023/assets/image-164.png
+?? output/conversation-report-20260911-1105-2023/assets/image-165.png
+?? output/conversation-report-20260911-1105-2023/assets/image-166.png
+?? output/conversation-report-20260911-1105-2023/assets/image-167.png
+?? output/conversation-report-20260911-1105-2023/assets/image-168.png
+?? output/conversation-report-20260911-1105-2023/assets/image-169.png
+?? output/conversation-report-20260911-1105-2023/assets/image-170.png
+?? output/conversation-report-20260911-1105-2023/assets/image-171.png
+?? output/conversation-report-20260911-1105-2023/assets/image-172.png
+?? output/conversation-report-20260911-1105-2023/assets/image-173.png
+?? output/conversation-report-20260911-1105-2023/assets/image-174.png
+?? output/conversation-report-20260911-1105-2023/assets/image-175.png
+?? output/conversation-report-20260911-1105-2023/assets/image-176.png
+?? output/conversation-report-20260911-1105-2023/assets/image-177.png
+?? output/conversation-report-20260911-1105-2023/assets/image-178.png
+?? output/conversation-report-20260911-1105-2023/assets/image-179.png
+?? output/conversation-report-20260911-1105-2023/assets/image-180.png
+?? output/conversation-report-20260911-1105-2023/assets/image-181.png
+?? output/conversation-report-20260911-1105-2023/assets/image-182.png
+?? output/conversation-report-20260911-1105-2023/assets/image-183.png
+?? output/conversation-report-20260911-1105-2023/assets/image-184.png
+?? output/conversation-report-20260911-1105-2023/assets/image-185.png
+?? output/conversation-report-20260911-1105-2023/assets/image-186.png
+?? output/conversation-report-20260911-1105-2023/assets/image-187.png
+?? output/conversation-report-20260911-1105-2023/build.mjs
+?? output/conversation-report-20260911-1105-2023/chapters.json
+?? output/conversation-report-20260911-1105-2023/conversation-full.pdf
+?? output/conversation-report-20260911-1105-2023/extract.mjs
+?? output/conversation-report-20260911-1105-2023/images-index.json
+?? output/conversation-report-20260911-1105-2023/inspect.mjs
+?? output/conversation-report-20260911-1105-2023/package.py
+?? output/conversation-report-20260911-1105-2023/qa/01-report-cover.png
+?? output/conversation-report-20260911-1105-2023/qa/02-conversation-and-image.png
+?? output/conversation-report-20260911-1105-2023/qa/03-last-section.png
+?? output/conversation-report-20260911-1105-2023/qa/04-mobile.png
+?? output/conversation-report-20260911-1105-2023/qa/browser-check.json
+?? output/conversation-report-20260911-1105-2023/qa/pdf-check.json
+?? output/conversation-report-20260911-1105-2023/qa/pdf-page-001.png
+?? output/conversation-report-20260911-1105-2023/qa/pdf-page-007.png
+?? output/conversation-report-20260911-1105-2023/qa/pdf-page-100.png
+?? output/conversation-report-20260911-1105-2023/qa/pdf-page-150.png
+?? output/conversation-report-20260911-1105-2023/qa/pdf-page-290-final.png
+?? output/conversation-report-20260911-1105-2023/qa/pdf-page-290.png
+?? output/conversation-report-20260911-1105-2023/qa/pdf-page-307.png
+?? output/conversation-report-20260911-1105-2023/qa/pdf-page-inventory.json
+?? output/conversation-report-20260911-1105-2023/questions-index.json
+?? output/conversation-report-20260911-1105-2023/render.mjs
+?? output/conversation-report-20260911-1105-2023/report.html
+?? output/conversation-report-20260911-1105-2023/scan.mjs
+?? output/conversation-report-20260911-1105-2023/selected-public-records.jsonl
+?? output/conversation-report-20260911-1105-2023/source-index.json
+?? output/conversation-report-20260911-1105-2023/structure-samples.json
+?? output/conversation-report-20260911-1105-2023/transcript.json
+?? output/conversation-report-20260911-1105-2023/transcript.txt
+?? output/conversation-report-20260911-1105-2023/verification.json
+?? output/conversation-report-20260911-1105-2023/verify_pdf.py
+?? output/design-proposal-20260912/current/01-dashboard.png
+?? output/design-proposal-20260912/current/02-projects.png
+?? output/design-proposal-20260912/current/03-library.png
+?? output/design-proposal-20260912/current/04-imports.png
+?? output/design-proposal-20260912/current/05-reports.png
+?? output/design-proposal-20260912/current/06-settings.png
+?? output/design-proposal-20260912/current/07-new-project.png
+?? output/design-proposal-20260912/current/08-summary.png
+?? output/design-proposal-20260912/current/09-timeline.png
+?? output/design-proposal-20260912/current/10-scope.png
+?? output/design-proposal-20260912/current/11-actions.png
+?? output/design-proposal-20260912/current/12-meetings.png
+?? output/design-proposal-20260912/current/13-comments.png
+?? output/design-proposal-20260912/current/14-contacts.png
+?? output/design-proposal-20260912/current/15-luminaires.png
+?? output/design-proposal-20260912/current/16-datasheets.png
+?? output/design-proposal-20260912/current/17-technical-check.png
+?? output/design-proposal-20260912/current/18-schedule.png
+?? output/design-proposal-20260912/current/19-boq.png
+?? output/design-proposal-20260912/current/20-systems.png
+?? output/design-proposal-20260912/current/21-accessories.png
+?? output/design-proposal-20260912/current/22-output-studio.png
+?? output/design-proposal-20260912/current/23-specifications.png
+?? output/design-proposal-20260912/current/24-revisions.png
+?? output/design-proposal-20260912/current/25-packages.png
+?? output/design-proposal-20260912/current/26-files.png
+?? output/design-proposal-20260912/current/27-board.png
+?? output/design-proposal-20260912/current/28-import-map.png
+?? output/design-proposal-20260912/current/29-import-apply.png
+?? output/design-proposal-20260912/current/30-work-session.png
+?? output/design-proposal-20260912/current/31-profile.png
+?? output/design-proposal-20260912/current/32-folder-profiles.png
+?? output/design-proposal-20260912/current/33-action-categories.png
+?? output/design-proposal-20260912/current/34-compare.png
+?? output/design-proposal-20260912/pages.json
+?? output/design-proposal-20260912/prepare.mjs
+?? output/design-proposal-20260912/proposed/01-dashboard.png
+?? output/design-proposal-20260912/proposed/02-projects.png
+?? output/design-proposal-20260912/proposed/03-library.png
+?? output/design-proposal-20260912/proposed/04-imports.png
+?? output/design-proposal-20260912/proposed/05-reports.png
+?? output/design-proposal-20260912/proposed/06-settings.png
+?? output/design-proposal-reference-led-20260912/build-report.mjs
+?? output/design-proposal-reference-led-20260912/current/dashboard.png
+?? output/design-proposal-reference-led-20260912/current/library.png
+?? output/design-proposal-reference-led-20260912/current/revisions.png
+?? output/design-proposal-reference-led-20260912/direction-v3.md
+?? output/design-proposal-reference-led-20260912/proposed/dashboard-light-v3.png
+?? output/design-proposal-reference-led-20260912/proposed/dashboard.png
+?? output/design-proposal-reference-led-20260912/proposed/library.png
+?? output/design-proposal-reference-led-20260912/proposed/revisions.png
+?? output/design-proposal-reference-led-20260912/references/dashboard.png
+?? output/design-proposal-reference-led-20260912/references/library.png
+?? output/design-proposal-reference-led-20260912/references/revisions.png
+?? output/pdf/SCT-Workspace-Before-After-High-Resolution.pdf
+?? output/pdf/SCT-Workspace-UX-Improvements-Report.pdf
+?? output/ux-flow-20260912/changed-baseline-files.json
+?? output/ux-flow-20260912/completion-report.html
+?? output/ux-flow-20260912/completion-report.md
+?? output/ux-flow-20260912/final-source/01-technical-context.png
+?? output/ux-flow-20260912/final-source/02-draft-dark-1024.png
+?? output/ux-flow-20260912/final-source/02-draft-light-1024.png
+?? output/ux-flow-20260912/final-source/results.json
+?? output/ux-flow-20260912/journey-dark/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_512deafb-18f3-454c-97db-d80c65c410c1.pdf
+?? output/ux-flow-20260912/journey-dark/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_b4dfe2a4-6f5e-4ad1-8d67-efd13d3e4aaa.xlsx
+?? output/ux-flow-20260912/journey-dark/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_506e3157-69ad-40c6-8e4f-bf0b5929a459.pdf
+?? output/ux-flow-20260912/journey-dark/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_6f2f0c38-6cbf-459d-8cb9-b29c55788d5a.xlsx
+?? output/ux-flow-20260912/journey-dark/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_139d8410-c5db-425a-827a-5f9093e232cf.xlsx
+?? output/ux-flow-20260912/journey-dark/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_fb76c733-7006-44bc-ada9-3ea68968a50d.pdf
+?? output/ux-flow-20260912/journey-dark/01-code-example.png
+?? output/ux-flow-20260912/journey-dark/02-information.png
+?? output/ux-flow-20260912/journey-dark/03-scope-empty-selections.png
+?? output/ux-flow-20260912/journey-dark/04-small-milestone.png
+?? output/ux-flow-20260912/journey-dark/05-folder-preview.png
+?? output/ux-flow-20260912/journey-dark/06-templates.png
+?? output/ux-flow-20260912/journey-dark/07-review.png
+?? output/ux-flow-20260912/journey-dark/08-created-summary.png
+?? output/ux-flow-20260912/journey-dark/09-edit-dirty-guard.png
+?? output/ux-flow-20260912/journey-dark/10-timeline-details.png
+?? output/ux-flow-20260912/journey-dark/11-timeline.png
+?? output/ux-flow-20260912/journey-dark/12-action-save-guard.png
+?? output/ux-flow-20260912/journey-dark/13-actions.png
+?? output/ux-flow-20260912/journey-dark/14-meetings.png
+?? output/ux-flow-20260912/journey-dark/15-scope.png
+?? output/ux-flow-20260912/journey-dark/16-comments.png
+?? output/ux-flow-20260912/journey-dark/17-contacts.png
+?? output/ux-flow-20260912/journey-dark/18-luminaires-bulk.png
+?? output/ux-flow-20260912/journey-dark/19-luminaire-editor.png
+?? output/ux-flow-20260912/journey-dark/20-luminaires.png
+?? output/ux-flow-20260912/journey-dark/21-datasheets.png
+?? output/ux-flow-20260912/journey-dark/22-technical-review.png
+?? output/ux-flow-20260912/journey-dark/23-lighting-systems.png
+?? output/ux-flow-20260912/journey-dark/24-system-accessories.png
+?? output/ux-flow-20260912/journey-dark/25-output-generation.png
+?? output/ux-flow-20260912/journey-dark/26-output-studio.png
+?? output/ux-flow-20260912/journey-dark/27-specifications-generation.png
+?? output/ux-flow-20260912/journey-dark/28-specifications.png
+?? output/ux-flow-20260912/journey-dark/29-revision-add-files.png
+?? output/ux-flow-20260912/journey-dark/30-revision-frozen.png
+?? output/ux-flow-20260912/journey-dark/31-revisions.png
+?? output/ux-flow-20260912/journey-dark/32-package-builder.png
+?? output/ux-flow-20260912/journey-dark/33-package-file.png
+?? output/ux-flow-20260912/journey-dark/34-package-preview.png
+?? output/ux-flow-20260912/journey-dark/35-package-issued.png
+?? output/ux-flow-20260912/journey-dark/36-search-canonical-luminaire.png
+?? output/ux-flow-20260912/journey-dark/Friday issued ZIP.zip
+?? output/ux-flow-20260912/journey-dark/Friday saved draft.zip
+?? output/ux-flow-20260912/journey-dark/results.json
+?? output/ux-flow-20260912/journey/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_503d0ff2-19a2-43c8-844f-438bb9fcdc92.xlsx
+?? output/ux-flow-20260912/journey/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_boq_8c9d7c4a-85dd-4498-a920-720d01bc0be2.pdf
+?? output/ux-flow-20260912/journey/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_951f6fa5-6f5b-484b-b13d-06345dc7fa88.xlsx
+?? output/ux-flow-20260912/journey/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_01_Studio_schedule_fcc80aff-f291-4ec3-9bfb-27e35666fe8c.pdf
+?? output/ux-flow-20260912/journey/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_aa27a72e-cc28-492f-a073-cc9f014e2f43.pdf
+?? output/ux-flow-20260912/journey/001_SCT260912_FRIDAY_WIZARD_VERIFICATION_REV_02_Studio_datasheets_ad488f75-5912-4317-abac-528927df3b04.xlsx
+?? output/ux-flow-20260912/journey/01-code-example.png
+?? output/ux-flow-20260912/journey/02-information.png
+?? output/ux-flow-20260912/journey/03-scope-empty-selections.png
+?? output/ux-flow-20260912/journey/04-small-milestone.png
+?? output/ux-flow-20260912/journey/05-folder-preview.png
+?? output/ux-flow-20260912/journey/06-templates.png
+?? output/ux-flow-20260912/journey/07-review.png
+?? output/ux-flow-20260912/journey/08-created-summary.png
+?? output/ux-flow-20260912/journey/09-edit-dirty-guard.png
+?? output/ux-flow-20260912/journey/10-timeline-details.png
+?? output/ux-flow-20260912/journey/11-timeline.png
+?? output/ux-flow-20260912/journey/12-action-save-guard.png
+?? output/ux-flow-20260912/journey/13-actions.png
+?? output/ux-flow-20260912/journey/14-meetings.png
+?? output/ux-flow-20260912/journey/15-scope.png
+?? output/ux-flow-20260912/journey/16-comments.png
+?? output/ux-flow-20260912/journey/17-contacts.png
+?? output/ux-flow-20260912/journey/18-luminaires-bulk.png
+?? output/ux-flow-20260912/journey/19-luminaire-editor.png
+?? output/ux-flow-20260912/journey/20-luminaires.png
+?? output/ux-flow-20260912/journey/21-datasheets.png
+?? output/ux-flow-20260912/journey/22-technical-review.png
+?? output/ux-flow-20260912/journey/23-lighting-systems.png
+?? output/ux-flow-20260912/journey/24-system-accessories.png
+?? output/ux-flow-20260912/journey/25-output-generation.png
+?? output/ux-flow-20260912/journey/26-output-studio.png
+?? output/ux-flow-20260912/journey/27-specifications-generation.png
+?? output/ux-flow-20260912/journey/28-specifications.png
+?? output/ux-flow-20260912/journey/29-revision-add-files.png
+?? output/ux-flow-20260912/journey/30-revision-frozen.png
+?? output/ux-flow-20260912/journey/31-revisions.png
+?? output/ux-flow-20260912/journey/32-package-builder.png
+?? output/ux-flow-20260912/journey/33-package-file.png
+?? output/ux-flow-20260912/journey/34-package-preview.png
+?? output/ux-flow-20260912/journey/35-package-issued.png
+?? output/ux-flow-20260912/journey/36-search-canonical-luminaire.png
+?? output/ux-flow-20260912/journey/Friday issued ZIP.zip
+?? output/ux-flow-20260912/journey/Friday saved draft.zip
+?? output/ux-flow-20260912/journey/results.json
+?? output/ux-flow-20260912/packaged/01-technical-context.png
+?? output/ux-flow-20260912/packaged/02-draft-dark-1024.png
+?? output/ux-flow-20260912/packaged/02-draft-light-1024.png
+?? output/ux-flow-20260912/packaged/failure.png
+?? output/ux-flow-20260912/packaged/results.json
+?? output/ux-flow-20260912/release-provenance.json
+?? output/ux-flow-20260912/report-preview.png
+?? packages/domain/src/technical-value-comparison.test.ts
+?? packages/domain/src/technical-value-comparison.ts
+?? scripts/agreement-dashboard-electron.mjs
+?? scripts/agreement-files-electron.mjs
+?? scripts/agreement-final-followups.mjs
+?? scripts/agreement-icons-preview.mjs
+?? scripts/agreement-import-electron.mjs
+?? scripts/agreement-library-electron.mjs
+?? scripts/agreement-new-project-electron.mjs
+?? scripts/agreement-package-visual.mjs
+?? scripts/agreement-packages-electron.mjs
+?? scripts/agreement-profile-electron.mjs
+?? scripts/agreement-reports-electron.mjs
+?? scripts/agreement-settings-electron.mjs
+?? scripts/approved-ui-electron-validation.mjs
+?? tests/v4-e2e/approved-ui-completion.spec.ts
+?? tmp/pdfs/before-after/after-1.jpg
+?? tmp/pdfs/before-after/after-2.jpg
+?? tmp/pdfs/before-after/after-3.jpg
+?? tmp/pdfs/before-after/after-4.jpg
+?? tmp/pdfs/before-after/assemble.py
+?? tmp/pdfs/before-after/build.mjs
+?? tmp/pdfs/before-after/manifest.json
+?? tmp/pdfs/before-after/originals-1.jpg
+?? tmp/pdfs/before-after/originals-2.jpg
+?? tmp/pdfs/before-after/originals-3.jpg
+?? tmp/pdfs/before-after/originals-4.jpg
+?? tmp/pdfs/before-after/originals-5.jpg
+?? tmp/pdfs/before-after/originals-6.jpg
+?? tmp/pdfs/before-after/qa/final-detail.png
+?? tmp/pdfs/before-after/qa/overview-1.jpg
+?? tmp/pdfs/before-after/qa/overview-2.jpg
+?? tmp/pdfs/before-after/qa/overview-3.jpg
+?? tmp/pdfs/before-after/qa/overview-4.jpg
+?? tmp/pdfs/before-after/qa/overview-5.jpg
+?? tmp/pdfs/before-after/qa/overview-6.jpg
+?? tmp/pdfs/before-after/qa/page-001.png
+?? tmp/pdfs/before-after/qa/page-002.png
+?? tmp/pdfs/before-after/qa/page-003.png
+?? tmp/pdfs/before-after/qa/page-004.png
+?? tmp/pdfs/before-after/qa/page-005.png
+?? tmp/pdfs/before-after/qa/page-006.png
+?? tmp/pdfs/before-after/qa/page-007.png
+?? tmp/pdfs/before-after/qa/page-008.png
+?? tmp/pdfs/before-after/qa/page-009.png
+?? tmp/pdfs/before-after/qa/page-010.png
+?? tmp/pdfs/before-after/qa/page-011.png
+?? tmp/pdfs/before-after/qa/page-012.png
+?? tmp/pdfs/before-after/qa/page-013.png
+?? tmp/pdfs/before-after/qa/page-014.png
+?? tmp/pdfs/before-after/qa/page-015.png
+?? tmp/pdfs/before-after/qa/page-016.png
+?? tmp/pdfs/before-after/qa/page-017.png
+?? tmp/pdfs/before-after/qa/page-018.png
+?? tmp/pdfs/before-after/qa/page-019.png
+?? tmp/pdfs/before-after/qa/page-020.png
+?? tmp/pdfs/before-after/qa/page-021.png
+?? tmp/pdfs/before-after/qa/page-022.png
+?? tmp/pdfs/before-after/qa/page-023.png
+?? tmp/pdfs/before-after/qa/page-024.png
+?? tmp/pdfs/before-after/qa/page-025.png
+?? tmp/pdfs/before-after/qa/page-026.png
+?? tmp/pdfs/before-after/qa/page-027.png
+?? tmp/pdfs/before-after/qa/page-028.png
+?? tmp/pdfs/before-after/qa/page-029.png
+?? tmp/pdfs/before-after/qa/page-030.png
+?? tmp/pdfs/before-after/qa/page-031.png
+?? tmp/pdfs/before-after/qa/page-032.png
+?? tmp/pdfs/before-after/qa/page-033.png
+?? tmp/pdfs/before-after/qa/page-034.png
+?? tmp/pdfs/before-after/qa/page-035.png
+?? tmp/pdfs/before-after/qa/page-036.png
+?? tmp/pdfs/before-after/qa/page-037.png
+?? tmp/pdfs/before-after/qa/page-038.png
+?? tmp/pdfs/before-after/qa/page-039.png
+?? tmp/pdfs/before-after/qa/page-040.png
+?? tmp/pdfs/before-after/qa/page-041.png
+?? tmp/pdfs/before-after/qa/page-042.png
+?? tmp/pdfs/before-after/qa/page-043.png
+?? tmp/pdfs/before-after/qa/page-044.png
+?? tmp/pdfs/before-after/qa/page-045.png
+?? tmp/pdfs/before-after/qa/page-046.png
+?? tmp/pdfs/before-after/qa/page-047.png
+?? tmp/pdfs/before-after/qa/page-048.png
+?? tmp/pdfs/before-after/qa/page-049.png
+?? tmp/pdfs/before-after/qa/page-050.png
+?? tmp/pdfs/before-after/qa/page-051.png
+?? tmp/pdfs/before-after/qa/page-052.png
+?? tmp/pdfs/before-after/qa/page-053.png
+?? tmp/pdfs/before-after/qa/page-054.png
+?? tmp/pdfs/before-after/qa/page-055.png
+?? tmp/pdfs/before-after/qa/page-056.png
+?? tmp/pdfs/before-after/qa/page-057.png
+?? tmp/pdfs/before-after/qa/page-058.png
+?? tmp/pdfs/before-after/qa/page-059.png
+?? tmp/pdfs/before-after/qa/page-060.png
+?? tmp/pdfs/before-after/qa/page-061.png
+?? tmp/pdfs/before-after/qa/page-062.png
+?? tmp/pdfs/before-after/qa/page-063.png
+?? tmp/pdfs/before-after/qa/page-064.png
+?? tmp/pdfs/before-after/qa/page-065.png
+?? tmp/pdfs/before-after/qa/page-066.png
+?? tmp/pdfs/before-after/qa/page-067.png
+?? tmp/pdfs/before-after/qa/page-068.png
+?? tmp/pdfs/before-after/qa/page-069.png
+?? tmp/pdfs/before-after/qa/page-070.png
+?? tmp/pdfs/before-after/qa/page-071.png
+?? tmp/pdfs/before-after/qa/page-072.png
+?? tmp/pdfs/before-after/qa/page-073.png
+?? tmp/pdfs/before-after/qa/page-074.png
+?? tmp/pdfs/before-after/qa/page-075.png
+?? tmp/pdfs/before-after/qa/page-076.png
+?? tmp/pdfs/before-after/qa/page-077.png
+?? tmp/pdfs/before-after/qa/page-078.png
+?? tmp/pdfs/before-after/qa/page-079.png
+?? tmp/pdfs/before-after/qa/page-080.png
+?? tmp/pdfs/before-after/qa/page-081.png
+?? tmp/pdfs/before-after/qa/page-082.png
+?? tmp/pdfs/before-after/qa/page-083.png
+?? tmp/pdfs/before-after/qa/page-084.png
+?? tmp/pdfs/before-after/qa/page-085.png
+?? tmp/pdfs/before-after/qa/page-086.png
+?? tmp/pdfs/before-after/qa/page-087.png
+?? tmp/pdfs/before-after/qa/page-088.png
+?? tmp/pdfs/before-after/qa/page-089.png
+?? tmp/pdfs/before-after/report.html
+?? tmp/pdfs/before-after/text-layer.pdf
+?? tmp/pdfs/before-after/validation.json
+?? tmp/pdfs/ux-report-1.png
+?? tmp/pdfs/ux-report-2.png
+?? tmp/pdfs/ux-report-3.png
+?? tmp/pdfs/ux-report.mjs
+?? tmp/ux-flow-20260912/api-all.json
+?? tmp/ux-flow-20260912/api-clean.json
+?? tmp/ux-flow-20260912/deliver.mjs
+?? tmp/ux-flow-20260912/focused-ui.json
+?? tmp/ux-flow-20260912/journey.mjs
+?? tmp/ux-flow-20260912/package-smoke.mjs
+?? tmp/ux-flow-20260912/prepare-journey.mjs
+?? tmp/ux-flow-20260912/preserve.mjs
+?? tmp/ux-flow-20260912/search-api.json
+?? tmp/ux-flow-20260912/ui-all.json
+?? tmp/ux-flow-20260912/ui-clean.json
+?? tmp/ux-flow-20260912/ui-final.json

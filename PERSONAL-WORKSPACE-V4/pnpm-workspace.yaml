@@ -1,0 +1,18 @@
+packages:
+  - apps/*
+  - packages/*
+
+onlyBuiltDependencies:
+  - electron
+  - esbuild
+allowBuilds:
+  '@azure/msal-node-extensions': true
+  # The CLI postinstall only removes a PowerShell shim and requires npm.exe;
+  # this workspace uses pnpm and invokes the cross-platform atk binary directly.
+  '@microsoft/m365agentstoolkit-cli': false
+  electron: true
+  electron-winstaller: false
+  esbuild: true
+  keytar: true
+  # OCR runtime is pure JavaScript/WASM; its optional funding postinstall is unnecessary.
+  tesseract.js: false

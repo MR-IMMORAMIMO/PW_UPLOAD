@@ -1,0 +1,49 @@
+{
+  "id": null,
+  "appId": "${{ENTRA_CLIENT_ID}}",
+  "displayName": "SCLI Lighting Project Workspace-${{TEAMSFX_ENV}}",
+  "signInAudience": "AzureADMyOrg",
+  "identifierUris": ["api://${{TAB_DOMAIN}}/${{ENTRA_CLIENT_ID}}"],
+  "web": {
+    "redirectUris": []
+  },
+  "spa": {
+    "redirectUris": ["${{TAB_ENDPOINT}}/auth-end.html"]
+  },
+  "api": {
+    "requestedAccessTokenVersion": 2,
+    "oauth2PermissionScopes": [
+      {
+        "adminConsentDescription": "Allow Teams to access SCLI Lighting Project Workspace on behalf of the signed-in user.",
+        "adminConsentDisplayName": "Access SCLI Lighting Project Workspace",
+        "id": "6e9b50a9-7070-4bcb-90b6-c1b29bd20f6d",
+        "isEnabled": true,
+        "type": "User",
+        "userConsentDescription": "Allow Teams to access SCLI Lighting Project Workspace on your behalf.",
+        "userConsentDisplayName": "Access SCLI Lighting Project Workspace",
+        "value": "access_as_user"
+      }
+    ],
+    "preAuthorizedApplications": [
+      {
+        "appId": "1fec8e78-bce4-4aaf-ab1b-5451cc387264",
+        "delegatedPermissionIds": ["6e9b50a9-7070-4bcb-90b6-c1b29bd20f6d"]
+      },
+      {
+        "appId": "5e3ce6c0-2b1f-4285-8d4b-75ee78787346",
+        "delegatedPermissionIds": ["6e9b50a9-7070-4bcb-90b6-c1b29bd20f6d"]
+      }
+    ]
+  },
+  "requiredResourceAccess": [
+    {
+      "resourceAppId": "00000003-0000-0000-c000-000000000000",
+      "resourceAccess": [
+        {
+          "id": "883ea226-0bf2-4a8f-9f9d-92c9162a727d",
+          "type": "Role"
+        }
+      ]
+    }
+  ]
+}

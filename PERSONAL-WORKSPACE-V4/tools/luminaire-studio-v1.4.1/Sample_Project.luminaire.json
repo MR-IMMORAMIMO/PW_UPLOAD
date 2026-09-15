@@ -1,0 +1,857 @@
+{
+  "schemaVersion": 1,
+  "id": "6be44ac9-0660-4f74-a1e3-4b3107eb7619",
+  "meta": {
+    "name": "Sample lighting project",
+    "client": "Demonstration only",
+    "company": "",
+    "consultant": "",
+    "number": "",
+    "document": "LS-DEMO-001",
+    "revision": "P01",
+    "date": "2026-09-08",
+    "purpose": "For Review",
+    "prepared": "",
+    "checked": "",
+    "approved": "",
+    "currency": "AED",
+    "notes": "Illustrative data only. Replace with verified manufacturer specifications before client issue.",
+    "logo": ""
+  },
+  "luminaires": [
+    {
+      "manufacturer": "Example brand",
+      "powerBasis": "System input",
+      "cct": 3000,
+      "cri": 90,
+      "finish": "White",
+      "unit": "pcs",
+      "driver": "Integral",
+      "control": "On/Off",
+      "driverSupply": "Included",
+      "id": "0a37c62c-00a0-4f38-8174-cb1fa13d6906",
+      "tag": "DL01",
+      "scope": "Indoor",
+      "floor": "Ground floor",
+      "area": "Lobby",
+      "type": "Downlight",
+      "description": "Recessed fixed downlight",
+      "orderCode": "DEMO-DL",
+      "power": 10,
+      "lumens": 850,
+      "beam": "36°",
+      "ip": "IP44",
+      "mounting": "Recessed",
+      "dimensions": "Ø90 × 100",
+      "cutout": "Ø80",
+      "quantity": 12
+    },
+    {
+      "manufacturer": "Example brand",
+      "powerBasis": "System input",
+      "cct": 3000,
+      "cri": 90,
+      "finish": "White",
+      "unit": "pcs",
+      "driver": "Integral",
+      "control": "On/Off",
+      "driverSupply": "Included",
+      "id": "baeadd7b-d4c8-4c25-be71-15a5e4226977",
+      "tag": "TL01",
+      "scope": "Indoor",
+      "floor": "Ground floor",
+      "area": "Gallery",
+      "type": "Track spotlight",
+      "systemId": "b7f0dbca-809e-4875-b0e7-41c49df294ea",
+      "description": "Adjustable track spotlight",
+      "orderCode": "DEMO-TL",
+      "power": 18,
+      "lumens": 1500,
+      "beam": "24°",
+      "ip": "IP20",
+      "quantity": 8
+    },
+    {
+      "manufacturer": "Example brand",
+      "powerBasis": "System input",
+      "cct": 3000,
+      "cri": 90,
+      "finish": "White",
+      "unit": "pcs",
+      "driver": "Integral",
+      "control": "On/Off",
+      "driverSupply": "Included",
+      "id": "cc1ddb9a-338b-4031-b9c5-07de867d7854",
+      "tag": "WL01",
+      "scope": "Indoor",
+      "floor": "First floor",
+      "area": "Corridor",
+      "type": "Wall light",
+      "description": "Wall-mounted luminaire",
+      "orderCode": "DEMO-WL",
+      "power": 8,
+      "lumens": 550,
+      "beam": "Diffuse",
+      "ip": "IP20",
+      "quantity": 6
+    },
+    {
+      "manufacturer": "Example brand",
+      "powerBasis": "LED load",
+      "cct": 3000,
+      "cri": 90,
+      "finish": "White",
+      "unit": "m",
+      "driver": "Remote",
+      "control": "On/Off",
+      "driverSupply": "Separate supply",
+      "id": "c6b1585b-2ac9-4566-863a-e53743ae3410",
+      "tag": "LS01",
+      "scope": "Outdoor",
+      "floor": "Ground level",
+      "area": "Facade",
+      "type": "LED strip",
+      "systemId": "5b9bb6fa-aac0-4c35-8ae6-f754ce221508",
+      "description": "Linear LED strip",
+      "orderCode": "DEMO-LS",
+      "power": 12,
+      "lumens": 1000,
+      "beam": "Diffuse",
+      "ip": "IP67",
+      "quantity": 15
+    }
+  ],
+  "systems": [
+    {
+      "id": "b7f0dbca-809e-4875-b0e7-41c49df294ea",
+      "code": "TR-01",
+      "type": "Track system",
+      "scope": "Indoor",
+      "floor": "Ground floor",
+      "area": "Gallery",
+      "family": "Demo track family",
+      "manufacturer": "Example brand",
+      "voltage": "Mains track",
+      "mounting": "Surface"
+    },
+    {
+      "id": "5b9bb6fa-aac0-4c35-8ae6-f754ce221508",
+      "code": "LS-01",
+      "type": "LED strip system",
+      "scope": "Outdoor",
+      "floor": "Ground level",
+      "area": "Facade",
+      "family": "Demo linear family",
+      "voltage": "24 V DC"
+    }
+  ],
+  "accessories": [
+    {
+      "id": "ae5609b1-9204-4adf-84c8-2380e7f4e9a7",
+      "ref": "TR-A01",
+      "systemId": "b7f0dbca-809e-4875-b0e7-41c49df294ea",
+      "component": "Track length",
+      "description": "Track section",
+      "manufacturer": "Example brand",
+      "orderCode": "DEMO-TRACK",
+      "pieceLength": 2,
+      "unit": "pcs",
+      "quantity": 4,
+      "supply": "Separate supply"
+    },
+    {
+      "id": "6ae54985-0d5a-4f01-809a-b24ead2bec9f",
+      "ref": "TR-A02",
+      "systemId": "b7f0dbca-809e-4875-b0e7-41c49df294ea",
+      "component": "Power feed",
+      "description": "End power feed",
+      "unit": "pcs",
+      "quantity": 1,
+      "supply": "Separate supply"
+    },
+    {
+      "id": "9f423ff9-1a99-4e7b-81c8-accf44bc756c",
+      "ref": "LS-A01",
+      "systemId": "5b9bb6fa-aac0-4c35-8ae6-f754ce221508",
+      "component": "Driver",
+      "description": "Remote LED driver",
+      "driverCapacity": 240,
+      "unit": "pcs",
+      "quantity": 1,
+      "supply": "Separate supply"
+    }
+  ],
+  "customFields": [],
+  "output": {
+    "aggregateBOQ": false,
+    "pageBreakScope": false,
+    "pageBreakFloor": false,
+    "autoFit": true,
+    "fontFamily": "Roboto",
+    "kind": "schedule",
+    "scope": "All",
+    "floor": "All",
+    "area": "All",
+    "grouping": [
+      "scope",
+      "floor",
+      "type"
+    ],
+    "pageSize": "A3",
+    "orientation": "landscape",
+    "fontSize": 10,
+    "rowsPerPage": 6,
+    "showEmpty": true,
+    "includeAccessories": true,
+    "columns": [
+      {
+        "key": "tag",
+        "label": "Tag",
+        "type": "text",
+        "width": 11,
+        "visible": true
+      },
+      {
+        "key": "image",
+        "label": "Product image",
+        "type": "image",
+        "width": 20,
+        "visible": true
+      },
+      {
+        "key": "description",
+        "label": "Description",
+        "type": "text",
+        "width": 34,
+        "visible": true
+      },
+      {
+        "key": "manufacturer",
+        "label": "Manufacturer",
+        "type": "text",
+        "width": 20,
+        "visible": true
+      },
+      {
+        "key": "orderCode",
+        "label": "Ordering code",
+        "type": "text",
+        "width": 24,
+        "visible": true
+      },
+      {
+        "key": "power",
+        "label": "Power per unit (W)",
+        "type": "number",
+        "width": 13,
+        "visible": true
+      },
+      {
+        "key": "lumens",
+        "label": "Lumens per unit",
+        "type": "number",
+        "width": 13,
+        "visible": true
+      },
+      {
+        "key": "cct",
+        "label": "CCT (K)",
+        "type": "number",
+        "width": 11,
+        "visible": true
+      },
+      {
+        "key": "cri",
+        "label": "CRI",
+        "type": "number",
+        "width": 9,
+        "visible": true
+      },
+      {
+        "key": "beam",
+        "label": "Beam / distribution",
+        "type": "text",
+        "width": 18,
+        "visible": true
+      },
+      {
+        "key": "ip",
+        "label": "IP rating",
+        "type": "text",
+        "width": 10,
+        "visible": true
+      },
+      {
+        "key": "control",
+        "label": "Control",
+        "type": "text",
+        "width": 15,
+        "visible": true
+      },
+      {
+        "key": "unit",
+        "label": "Unit",
+        "type": "text",
+        "width": 9,
+        "visible": true
+      },
+      {
+        "key": "quantity",
+        "label": "Quantity",
+        "type": "number",
+        "width": 11,
+        "visible": true
+      },
+      {
+        "key": "scope",
+        "label": "Environment",
+        "type": "text",
+        "width": 14,
+        "visible": false
+      },
+      {
+        "key": "floor",
+        "label": "Floor / level",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "area",
+        "label": "Area / location",
+        "type": "text",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "type",
+        "label": "Luminaire type",
+        "type": "text",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "systemId",
+        "label": "System ID",
+        "type": "text",
+        "width": 13,
+        "visible": false
+      },
+      {
+        "key": "model",
+        "label": "Family / model",
+        "type": "text",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "powerBasis",
+        "label": "Power basis",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "ik",
+        "label": "IK rating",
+        "type": "text",
+        "width": 10,
+        "visible": false
+      },
+      {
+        "key": "mounting",
+        "label": "Mounting",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "dimensions",
+        "label": "Dimensions (mm)",
+        "type": "text",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "cutout",
+        "label": "Cut-out (mm)",
+        "type": "text",
+        "width": 17,
+        "visible": false
+      },
+      {
+        "key": "finish",
+        "label": "Finish",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "material",
+        "label": "Material",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "driver",
+        "label": "Driver arrangement",
+        "type": "text",
+        "width": 18,
+        "visible": false
+      },
+      {
+        "key": "driverSupply",
+        "label": "Driver supply",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "load",
+        "label": "Scheduled power (W)",
+        "type": "number",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "datasheet",
+        "label": "Datasheet reference",
+        "type": "text",
+        "width": 24,
+        "visible": false
+      },
+      {
+        "key": "notes",
+        "label": "Notes",
+        "type": "text",
+        "width": 30,
+        "visible": false
+      },
+      {
+        "key": "rate",
+        "label": "Unit rate",
+        "type": "number",
+        "width": 12,
+        "visible": false
+      },
+      {
+        "key": "amount",
+        "label": "Amount",
+        "type": "number",
+        "width": 14,
+        "visible": false
+      }
+    ],
+    "boqColumns": [
+      {
+        "key": "tag",
+        "label": "Tag",
+        "type": "text",
+        "width": 11,
+        "visible": true
+      },
+      {
+        "key": "description",
+        "label": "Description",
+        "type": "text",
+        "width": 34,
+        "visible": true
+      },
+      {
+        "key": "manufacturer",
+        "label": "Manufacturer",
+        "type": "text",
+        "width": 20,
+        "visible": true
+      },
+      {
+        "key": "orderCode",
+        "label": "Ordering code",
+        "type": "text",
+        "width": 24,
+        "visible": true
+      },
+      {
+        "key": "unit",
+        "label": "Unit",
+        "type": "text",
+        "width": 9,
+        "visible": true
+      },
+      {
+        "key": "quantity",
+        "label": "Quantity",
+        "type": "number",
+        "width": 11,
+        "visible": true
+      },
+      {
+        "key": "image",
+        "label": "Product image",
+        "type": "image",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "scope",
+        "label": "Environment",
+        "type": "text",
+        "width": 14,
+        "visible": false
+      },
+      {
+        "key": "floor",
+        "label": "Floor / level",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "area",
+        "label": "Area / location",
+        "type": "text",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "type",
+        "label": "Luminaire type",
+        "type": "text",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "systemId",
+        "label": "System ID",
+        "type": "text",
+        "width": 13,
+        "visible": false
+      },
+      {
+        "key": "model",
+        "label": "Family / model",
+        "type": "text",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "power",
+        "label": "Power per unit (W)",
+        "type": "number",
+        "width": 13,
+        "visible": false
+      },
+      {
+        "key": "powerBasis",
+        "label": "Power basis",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "lumens",
+        "label": "Lumens per unit",
+        "type": "number",
+        "width": 13,
+        "visible": false
+      },
+      {
+        "key": "cct",
+        "label": "CCT (K)",
+        "type": "number",
+        "width": 11,
+        "visible": false
+      },
+      {
+        "key": "cri",
+        "label": "CRI",
+        "type": "number",
+        "width": 9,
+        "visible": false
+      },
+      {
+        "key": "beam",
+        "label": "Beam / distribution",
+        "type": "text",
+        "width": 18,
+        "visible": false
+      },
+      {
+        "key": "ip",
+        "label": "IP rating",
+        "type": "text",
+        "width": 10,
+        "visible": false
+      },
+      {
+        "key": "ik",
+        "label": "IK rating",
+        "type": "text",
+        "width": 10,
+        "visible": false
+      },
+      {
+        "key": "mounting",
+        "label": "Mounting",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "dimensions",
+        "label": "Dimensions (mm)",
+        "type": "text",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "cutout",
+        "label": "Cut-out (mm)",
+        "type": "text",
+        "width": 17,
+        "visible": false
+      },
+      {
+        "key": "finish",
+        "label": "Finish",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "material",
+        "label": "Material",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "driver",
+        "label": "Driver arrangement",
+        "type": "text",
+        "width": 18,
+        "visible": false
+      },
+      {
+        "key": "control",
+        "label": "Control",
+        "type": "text",
+        "width": 15,
+        "visible": false
+      },
+      {
+        "key": "driverSupply",
+        "label": "Driver supply",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "load",
+        "label": "Scheduled power (W)",
+        "type": "number",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "datasheet",
+        "label": "Datasheet reference",
+        "type": "text",
+        "width": 24,
+        "visible": false
+      },
+      {
+        "key": "notes",
+        "label": "Notes",
+        "type": "text",
+        "width": 30,
+        "visible": false
+      },
+      {
+        "key": "rate",
+        "label": "Unit rate",
+        "type": "number",
+        "width": 12,
+        "visible": false
+      },
+      {
+        "key": "amount",
+        "label": "Amount",
+        "type": "number",
+        "width": 14,
+        "visible": false
+      }
+    ],
+    "accessoryColumns": [
+      {
+        "key": "ref",
+        "label": "Component ref.",
+        "type": "text",
+        "width": 14,
+        "visible": true
+      },
+      {
+        "key": "systemId",
+        "label": "System ID",
+        "type": "text",
+        "width": 14,
+        "visible": true
+      },
+      {
+        "key": "component",
+        "label": "Component type",
+        "type": "text",
+        "width": 20,
+        "visible": true
+      },
+      {
+        "key": "description",
+        "label": "Description",
+        "type": "text",
+        "width": 32,
+        "visible": true
+      },
+      {
+        "key": "manufacturer",
+        "label": "Manufacturer",
+        "type": "text",
+        "width": 20,
+        "visible": true
+      },
+      {
+        "key": "orderCode",
+        "label": "Ordering code",
+        "type": "text",
+        "width": 22,
+        "visible": true
+      },
+      {
+        "key": "pieceLength",
+        "label": "Piece length (m)",
+        "type": "number",
+        "width": 15,
+        "visible": true
+      },
+      {
+        "key": "unit",
+        "label": "Unit",
+        "type": "text",
+        "width": 9,
+        "visible": true
+      },
+      {
+        "key": "quantity",
+        "label": "Quantity",
+        "type": "number",
+        "width": 12,
+        "visible": true
+      },
+      {
+        "key": "supply",
+        "label": "Supply scope",
+        "type": "text",
+        "width": 18,
+        "visible": true
+      },
+      {
+        "key": "image",
+        "label": "Product image",
+        "type": "image",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "scope",
+        "label": "Environment",
+        "type": "text",
+        "width": 14,
+        "visible": false
+      },
+      {
+        "key": "floor",
+        "label": "Floor / level",
+        "type": "text",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "area",
+        "label": "Area / location",
+        "type": "text",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "size",
+        "label": "Dimensions / size",
+        "type": "text",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "totalLength",
+        "label": "Scheduled length (m)",
+        "type": "number",
+        "width": 18,
+        "visible": false
+      },
+      {
+        "key": "driverCapacity",
+        "label": "Driver rating (W)",
+        "type": "number",
+        "width": 16,
+        "visible": false
+      },
+      {
+        "key": "finish",
+        "label": "Finish / IP",
+        "type": "text",
+        "width": 18,
+        "visible": false
+      },
+      {
+        "key": "systemFamily",
+        "label": "System family",
+        "type": "text",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "voltage",
+        "label": "System voltage / type",
+        "type": "text",
+        "width": 20,
+        "visible": false
+      },
+      {
+        "key": "datasheet",
+        "label": "Datasheet reference",
+        "type": "text",
+        "width": 24,
+        "visible": false
+      },
+      {
+        "key": "notes",
+        "label": "Notes",
+        "type": "text",
+        "width": 30,
+        "visible": false
+      },
+      {
+        "key": "rate",
+        "label": "Unit rate",
+        "type": "number",
+        "width": 12,
+        "visible": false
+      },
+      {
+        "key": "amount",
+        "label": "Amount",
+        "type": "number",
+        "width": 14,
+        "visible": false
+      }
+    ]
+  }
+}

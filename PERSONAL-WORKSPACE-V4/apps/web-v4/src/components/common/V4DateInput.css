@@ -1,0 +1,38 @@
+.v4-date-input {
+  position: relative;
+  display: flex;
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+}
+.v4-date-input > input {
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+}
+.v4-date-input__display {
+  position: absolute;
+  left: 12px;
+  right: 34px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--v4-text-primary);
+  font: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.v4-date-input__display::after {
+  content: attr(data-display-date);
+}
+.v4-date-input:has(input:disabled) .v4-date-input__display {
+  color: var(--v4-text-disabled);
+}
+.v4-date-input > input:focus {
+  color: var(--v4-text-primary) !important;
+  -webkit-text-fill-color: var(--v4-text-primary) !important;
+}
+.v4-date-input:has(input:focus) .v4-date-input__display {
+  visibility: hidden;
+}

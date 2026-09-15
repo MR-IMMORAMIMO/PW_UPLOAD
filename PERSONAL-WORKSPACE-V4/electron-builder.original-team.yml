@@ -1,0 +1,24 @@
+appId: com.scientechnic.scli.originalteamdemo
+productName: SCLI Original Team Demo
+asar: true
+directories:
+  output: release-original-team
+files:
+  - desktop/**/*
+  - apps/api/dist/**/*
+  - apps/web/dist/**/*
+  - package.json
+extraResources:
+  - from: tools/luminaire-exporter/SCLI Luminaire Studio.exe
+    to: luminaire-exporter/SCLI Luminaire Studio.exe
+extraMetadata:
+  main: desktop/main.cjs
+  scliWorkspaceVariant: team-demo
+win:
+  target:
+    - target: portable
+      arch:
+        - x64
+  artifactName: SCLI Original Team Demo v${version}.${ext}
+portable:
+  artifactName: SCLI Original Team Demo v${version}.${ext}

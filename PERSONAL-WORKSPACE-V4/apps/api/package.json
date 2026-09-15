@@ -1,0 +1,37 @@
+{
+  "name": "@scli/api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/server.ts",
+    "build": "tsup --config tsup.config.ts",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@azure/identity": "^4.13.1",
+    "@fastify/cors": "^11.3.0",
+    "@fastify/helmet": "^13.1.0",
+    "@fastify/static": "^10.1.2",
+    "@microsoft/teams.apps": "^2.0.14",
+    "@scli/config": "workspace:*",
+    "@scli/contracts": "workspace:*",
+    "@scli/domain": "workspace:*",
+    "@scli/test-data": "workspace:*",
+    "@tesseract.js-data/eng": "1.0.0",
+    "@thednp/dommatrix": "3.0.4",
+    "archiver": "8.0.0",
+    "exceljs": "4.4.0",
+    "fastify": "^5.11.0",
+    "jose": "^6.2.5",
+    "jszip": "^3.10.1",
+    "pdf-parse": "2.4.5",
+    "pngjs": "7.0.0",
+    "tesseract.js": "7.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/archiver": "7.0.0",
+    "@types/node": "^26.1.2"
+  }
+}

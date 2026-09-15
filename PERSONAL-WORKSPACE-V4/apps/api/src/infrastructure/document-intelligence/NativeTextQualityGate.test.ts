@@ -1,0 +1,291 @@
+import { describe, expect, it } from 'vitest';
+import { assessNativeTextQuality, lineIsReadable } from './NativeTextQualityGate';
+
+const ERCO_LIKE = [
+  'ERCO',
+  'Article no. A2000427',
+  'Iku Downlight',
+  'Connected load 10.6 W',
+  'Luminous flux 1222 lm',
+  'CCT 3000 K',
+  'CRI 92',
+  'Beam angle C0 55\u00b0',
+  'Dimming range 1%-100%',
+  'IP 20',
+  'White (RAL9002)',
+].join('\n');
+
+/** Reproduces the real FLOS bad-encoding output: C0-control glyph soup. */
+function corruptedGlyphText(): string {
+  const codes = [
+    0x00, 0x02, 0x02, 0x03, 0x04, 0x05, 0x06, 0x06, 0x03, 0x07, 0x08, 0x04, 0x04, 0x08, 0x0e, 0x0f,
+    0x10, 0x08, 0x04, 0x0f, 0x11, 0x08, 0x12, 0x06, 0x06, 0x13, 0x0e, 0x08, 0x14, 0x0e, 0x06, 0x03,
+    0x07, 0x08, 0x15, 0x16, 0x11, 0x02, 0x06, 0x04, 0x17, 0x18, 0x19, 0x03, 0x18, 0x1a, 0x1b, 0x18,
+    0x03, 0x0e, 0x16, 0x04, 0x18, 0x1c, 0x1d, 0x15, 0x18, 0x08, 0x03, 0x02, 0x11, 0x18, 0x12, 0x15,
+    0x16, 0x12, 0x18, 0x1b, 0x1e, 0x0f, 0x1f, 0x21, 0x1b, 0x0f, 0x1f, 0x06, 0x1b, 0x1e, 0x0f, 0x1f,
+    0x21, 0x1b, 0x0f, 0x1f, 0x22, 0x23, 0x1b, 0x23, 0x23, 0x24, 0x25, 0x0e, 0x08, 0x04, 0x24, 0x18,
+    0x24, 0x26, 0x0f, 0x27, 0x28, 0x29, 0x24, 0x1b, 0x1b, 0x23, 0x2a, 0x1b, 0x1a, 0x23, 0x1b, 0x2b,
+    0x1f, 0x24, 0x18, 0x24, 0x2b, 0x23, 0x06, 0x1e, 0x06, 0x23, 0x1b, 0x23, 0x1e, 0x03, 0x07, 0x08,
+    0x04, 0x04, 0x08, 0x0e, 0x0f, 0x10, 0x08, 0x04, 0x0f, 0x11, 0x08, 0x12, 0x24, 0x2c, 0x24, 0x08,
+    0x2d, 0x10, 0x08, 0x04, 0x0f, 0x11, 0x08, 0x12, 0x24, 0x2b, 0x06, 0x1b, 0x1e, 0x0f, 0x1f, 0x21,
+    0x1b, 0x0f, 0x1f, 0x2e, 0x0e, 0x11, 0x19, 0x2f, 0x30, 0x31, 0x32, 0x24, 0x33, 0x30, 0x34, 0x24,
+    0x35, 0x24, 0x36, 0x37, 0x24, 0x38, 0x39, 0x3a, 0x31, 0x24, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f, 0x24,
+    0x40, 0x34, 0x41, 0x3c, 0x42, 0x24, 0x43, 0x3e, 0x3f, 0x3c, 0x3a, 0x44, 0x45, 0x46, 0x47, 0x48,
+    0x49, 0x4a, 0x46, 0x4b, 0x24, 0x4c, 0x4d, 0x24, 0x4e, 0x4f, 0x50, 0x51, 0x24, 0x52, 0x53, 0x54,
+    0x55, 0x48, 0x56, 0x46, 0x54, 0x56, 0x57, 0x53, 0x58, 0x59, 0x20, 0x5a, 0x24, 0x5b, 0x5c, 0x5d,
+    0x5e, 0x5f, 0x60, 0x61, 0x24, 0x18, 0x5f, 0x60, 0x61, 0x07, 0x07, 0x17, 0x24, 0x18, 0x2b, 0x21,
+    0x62, 0x24, 0x18, 0x1a, 0x23, 0x23, 0x0e, 0x12, 0x24, 0x18, 0x21, 0x1b, 0x1b, 0x24, 0x18, 0x64,
+    0x65, 0x27, 0x66, 0x24, 0x2a, 0x1b, 0x24, 0x18, 0x2e, 0x12, 0x67, 0x24, 0x23, 0x1e, 0x65, 0x11,
+    0x04, 0x04, 0x15, 0x24, 0x0e, 0x16, 0x12, 0x07, 0x24, 0x68, 0x02, 0x00, 0x5f, 0x60, 0x61, 0x24,
+    0x0e, 0x13, 0x00, 0x02, 0x24, 0x04, 0x08, 0x16, 0x07, 0x11, 0x0f, 0x24, 0x26, 0x08, 0x68, 0x07,
+    0x24, 0x04, 0x16, 0x03, 0x03, 0x0e, 0x17, 0x24, 0x08, 0x02, 0x24, 0x11, 0x0e, 0x16, 0x15, 0x15,
+    0x0f, 0x24, 0x27, 0x04, 0x02, 0x0e, 0x0a,
+  ];
+  return String.fromCharCode(...codes);
+}
+
+function highVolumeGarbage(): string {
+  const chunk = [
+    0x0e, 0x13, 0x00, 0x02, 0x13, 0x24, 0x02, 0x17, 0x03, 0x20, 0x3f, 0x07, 0x11, 0x02, 0x3e, 0x13,
+    0x00, 0x02, 0x24, 0x15, 0x04, 0x02, 0x07, 0x14, 0x16, 0x02, 0x08, 0x20, 0x40, 0x17, 0x12, 0x12,
+    0x20, 0x02, 0x07, 0x11, 0x41, 0x41, 0x42, 0x24, 0x43, 0x44, 0x45, 0x20, 0x21, 0x1b, 0x1b, 0x46,
+    0x27, 0x47, 0x20, 0x2a, 0x11, 0x29, 0x15, 0x20, 0x12, 0x24, 0x04, 0x02, 0x03, 0x04, 0x43, 0x40,
+    0x3f, 0x41, 0x48, 0x45,
+  ];
+  const chunks: string[] = [];
+  for (let index = 0; index < 200; index += 1) chunks.push(String.fromCharCode(...chunk));
+  return chunks.join('\n');
+}
+
+describe('NativeTextQualityGate', () => {
+  describe('assessNativeTextQuality', () => {
+    it('A: accepts healthy English technical text natively (no OCR)', () => {
+      const result = assessNativeTextQuality(ERCO_LIKE);
+      expect(result.readingMode).toBe('NATIVE_GOOD');
+      expect(result.decision).toBe('NATIVE_GOOD');
+      expect(result.wordLikeTokenRatio).toBeGreaterThan(0.4);
+      expect(result.controlRatio).toBe(0);
+      expect(result.printableRatio).toBe(1);
+      expect(result.nativeTextCharacterCount).toBeGreaterThan(50);
+    });
+
+    it('B: accepts healthy technical text with units, symbols, RAL codes, and IP codes', () => {
+      const technical = [
+        'Luminaire: Easy Kap \u00d8 80 Plus Fixed Optic Medium',
+        'Power 13 W \u00b7 System power 13.4 W',
+        'Source flux 1397 lm \u00b7 Luminaire flux 822 lm',
+        'CCT 3000 K \u00b7 CRI >90 \u00b7 Beam 25\u00b0',
+        'IP54 \u00b7 IP20',
+        'Finish Black (RAL9005)',
+        'Recessed depth 150 mm',
+      ].join('\n');
+      const result = assessNativeTextQuality(technical);
+      expect(result.readingMode).toBe('NATIVE_GOOD');
+      expect(result.decision).toBe('NATIVE_GOOD');
+      expect(result.wordLikeTokenRatio).toBeGreaterThan(0.4);
+    });
+
+    it('C: does not reject a short but valid technical page merely because quantity is low', () => {
+      const short = 'FLOS\nEasy Kap\nIP54\n13.4 W\n822 lm\n3000 K';
+      const result = assessNativeTextQuality(short);
+      expect(result.readingMode).toBe('NATIVE_GOOD');
+      expect(result.decision).toBe('NATIVE_GOOD');
+    });
+
+    it('D: classifies corrupted glyph-like text as OCR_REQUIRED despite high character count', () => {
+      const result = assessNativeTextQuality(corruptedGlyphText());
+      expect(result.nativeTextCharacterCount).toBeGreaterThan(80);
+      expect(result.readingMode).toBe('NATIVE_CORRUPTED');
+      expect(result.decision).toBe('OCR_REQUIRED');
+      expect(result.controlRatio).toBeGreaterThan(0.3);
+      expect(result.readableLineRatio).toBeLessThan(0.25);
+    });
+
+    it('E: classifies high-volume glyph garbage as OCR_REQUIRED', () => {
+      const result = assessNativeTextQuality(highVolumeGarbage());
+      expect(result.nativeTextCharacterCount).toBeGreaterThan(1000);
+      expect(result.decision).toBe('OCR_REQUIRED');
+      expect(result.readingMode).toBe('NATIVE_CORRUPTED');
+    });
+
+    it('F: accepts mixed symbols and valid technical text when readable content dominates', () => {
+      const mixed = [
+        'Product datasheet Easy Kap 80',
+        '\u00d880 \u00b7 25\u00b0 \u00b7 13.4 W \u00b7 822 lm \u00b7 3000 K \u00b7 IP54',
+        'Colour: Black (RAL9005)',
+        'Recessed depth 150 mm',
+        'Some unreadable tail: \u00bd\u00be\u0002\u0003\u0004\u0005',
+      ].join('\n');
+      const result = assessNativeTextQuality(mixed);
+      expect(result.readingMode).toBe('NATIVE_GOOD');
+      expect(result.decision).toBe('NATIVE_GOOD');
+    });
+
+    it('classifies an empty page as IMAGE_ONLY and OCR_REQUIRED (scanned PDF support preserved)', () => {
+      const result = assessNativeTextQuality('');
+      expect(result.readingMode).toBe('IMAGE_ONLY');
+      expect(result.decision).toBe('OCR_REQUIRED');
+      expect(result.nativeTextCharacterCount).toBe(0);
+    });
+
+    it('classifies a page with only whitespace as IMAGE_ONLY and OCR_REQUIRED', () => {
+      const result = assessNativeTextQuality('   \n\t  \n');
+      expect(result.readingMode).toBe('IMAGE_ONLY');
+      expect(result.decision).toBe('OCR_REQUIRED');
+    });
+
+    it('classifies a hybrid page (readable headings + corrupted table text) as HYBRID/OCR_REQUIRED', () => {
+      const hybrid = [
+        'FLOS Easy Kap Datasheet',
+        'Photometric section',
+        String.fromCharCode(
+          0x0e,
+          0x13,
+          0x00,
+          0x02,
+          0x13,
+          0x24,
+          0x02,
+          0x17,
+          0x03,
+          0x20,
+          0x3f,
+          0x07,
+          0x11,
+          0x02,
+        ),
+        String.fromCharCode(
+          0x0e,
+          0x06,
+          0x13,
+          0x0e,
+          0x08,
+          0x14,
+          0x20,
+          0x0e,
+          0x06,
+          0x03,
+          0x07,
+          0x08,
+          0x15,
+          0x16,
+          0x11,
+          0x02,
+          0x06,
+          0x04,
+          0x17,
+          0x18,
+          0x19,
+          0x03,
+          0x18,
+          0x1a,
+          0x1b,
+          0x18,
+          0x03,
+        ),
+        'Electrical section',
+        String.fromCharCode(
+          0x13,
+          0x00,
+          0x02,
+          0x13,
+          0x24,
+          0x02,
+          0x17,
+          0x03,
+          0x20,
+          0x3f,
+          0x07,
+          0x11,
+          0x02,
+          0x3e,
+          0x13,
+          0x00,
+          0x02,
+          0x24,
+          0x15,
+          0x04,
+          0x02,
+          0x07,
+          0x14,
+          0x16,
+          0x02,
+          0x08,
+          0x20,
+          0x40,
+          0x17,
+          0x12,
+          0x12,
+          0x20,
+          0x02,
+          0x07,
+          0x11,
+          0x41,
+          0x41,
+          0x42,
+          0x24,
+          0x43,
+          0x44,
+          0x45,
+          0x20,
+          0x21,
+          0x1b,
+          0x1b,
+          0x46,
+          0x27,
+          0x47,
+          0x20,
+          0x12,
+          0x24,
+          0x04,
+          0x02,
+          0x03,
+          0x04,
+          0x43,
+          0x40,
+          0x3f,
+          0x41,
+          0x48,
+          0x45,
+          0x20,
+          0x21,
+          0x3e,
+          0x49,
+          0x3f,
+          0x24,
+          0x3e,
+          0x24,
+        ),
+      ].join('\n');
+      const result = assessNativeTextQuality(hybrid);
+      expect(result.decision).toBe('OCR_REQUIRED');
+      expect(result.readingMode).toBe('HYBRID');
+      expect(result.readableLineRatio).toBeGreaterThanOrEqual(0.25);
+    });
+
+    it('keeps the assessment deterministic for the same input', () => {
+      expect(assessNativeTextQuality(ERCO_LIKE)).toEqual(assessNativeTextQuality(ERCO_LIKE));
+      expect(assessNativeTextQuality(corruptedGlyphText())).toEqual(
+        assessNativeTextQuality(corruptedGlyphText()),
+      );
+    });
+  });
+
+  describe('lineIsReadable', () => {
+    it('recognizes readable technical lines', () => {
+      expect(lineIsReadable('Ordering Code: A2000427')).toBe(true);
+      expect(lineIsReadable('IP54')).toBe(true);
+      expect(lineIsReadable('Recessed depth 150 mm')).toBe(true);
+      expect(lineIsReadable('White (RAL9002)')).toBe(true);
+      expect(lineIsReadable('3000 K')).toBe(true);
+      expect(lineIsReadable('Beam angle 25\u00b0')).toBe(true);
+    });
+
+    it('rejects corrupted control-character lines', () => {
+      expect(
+        lineIsReadable(String.fromCharCode(0x0e, 0x13, 0x00, 0x02, 0x13, 0x24, 0x02, 0x17)),
+      ).toBe(false);
+      expect(lineIsReadable('')).toBe(false);
+    });
+  });
+});

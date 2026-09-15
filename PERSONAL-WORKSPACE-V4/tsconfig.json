@@ -1,0 +1,14 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/config" },
+    { "path": "./packages/domain" },
+    { "path": "./packages/contracts" },
+    { "path": "./packages/api-client" },
+    { "path": "./packages/test-data" },
+    { "path": "./packages/theme" },
+    { "path": "./apps/api" },
+    { "path": "./apps/web" },
+    { "path": "./apps/web-v4" }
+  ]
+}

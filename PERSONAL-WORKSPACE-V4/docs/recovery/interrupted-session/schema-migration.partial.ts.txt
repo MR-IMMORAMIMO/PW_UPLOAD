@@ -1,0 +1,47 @@
+import type { DatabaseSyncInstance } from './standalone-data-provider';
+
+export interface IMigration {
+  version: number;
+  migrate: (db: DatabaseSyncInstance) => void;
+}
+
+export class SchemaMigrator {
+  private readonly migrations: IMigration[];
+
+  constructor(migrations: IMigration[]) {
+    this.migrations = migrations.slice().sort((a, b) => a.version - b.version);
+  }
+
+  public migrate(db: DatabaseSyncInstance): void {
+    // Ensure the schema_migrations table exists
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS schema_migrations (
+        version INTEGER PRIMARY KEY,
+        applied_at TEXT NOT NULL
+      );
+    `);
+
+    // Get the current version
+    const row = db.prepare('SELECT MAX(version) as version FROM schema_migrations').get();
+    const currentVersion = row.version as number | null ?? 0;
+
+    // Get pending migrations
+    const pending = this.migrations.filter(m => m.version > currentVersion);
+
+    for (const migration of pending) {
+      // We will use a transaction by executing BEGIN, then the migration, then COMMIT.
+      // If any error occurs, we roll back.
+      try {
+        db.exec('BEGIN');
+        migration.migrate(db);
+        // Record the migration
+        db.prepare('INSERT INTO schema_migrations (version, applied_at) VALUES (?, ?)')
+          .run(migration.version, new Date().toISOString());
+        db.exec('COMMIT');
+      } catch (e) {
+        db.exec('ROLLBACK');
+        throw new Error(`Migration ${migration.version} failed: ${e}`);
+      }
+    }
+  }
+}

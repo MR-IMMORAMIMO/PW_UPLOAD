@@ -1,0 +1,277 @@
+import { mkdirSync } from 'node:fs';
+import path from 'node:path';
+import { randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
+import { z } from 'zod';
+import type { AppConfig } from '@scli/config';
+import {
+  DomainError,
+  type AppNotification,
+  type AppSettings,
+  type AppUser,
+  type LocalIdentityProvider,
+  type Project,
+  type ProjectActivity,
+  type ProjectComment,
+  type ProjectCreateRecord,
+} from '@scli/domain';
+import { seedSettings, type SeedData } from '@scli/test-data';
+import { MockDataProvider } from './mock-data-provider';
+
+// Keep the specifier dynamic until the bundler recognizes Node's stable sqlite module.
+// Older esbuild versions incorrectly rewrite a static `node:sqlite` import to `sqlite`.
+const nodeSqliteSpecifier = ['node', 'sqlite'].join(':');
+const { DatabaseSync } = (await import(nodeSqliteSpecifier)) as typeof import('node:sqlite');
+type DatabaseSyncInstance = InstanceType<typeof DatabaseSync>;
+
+const persistedStateSchema = z.object({
+  users: z.array(z.object({ id: z.string().uuid(), email: z.string().email() }).passthrough()),
+  projects: z.array(
+    z.object({ id: z.string().uuid(), version: z.number().int().min(1) }).passthrough(),
+  ),
+  activities: z.array(
+    z.object({ id: z.string().uuid(), projectId: z.string().uuid() }).passthrough(),
+  ),
+  comments: z.array(
+    z.object({ id: z.string().uuid(), projectId: z.string().uuid() }).passthrough(),
+  ),
+  notifications: z.array(
+    z.object({ id: z.string().uuid(), recipientUserId: z.string().uuid() }).passthrough(),
+  ),
+  settings: z
+    .object({ companyTimezone: z.string(), projectTypes: z.array(z.unknown()) })
+    .passthrough(),
+  lastSequence: z.number().int().min(0),
+});
+
+function hashPassword(password: string, salt = randomBytes(16).toString('hex')) {
+  return { salt, hash: scryptSync(password, salt, 64).toString('hex') };
+}
+
+function standaloneSeed(config: AppConfig): SeedData {
+  const now = new Date().toISOString();
+  const adminId = crypto.randomUUID();
+  const admin: AppUser = {
+    id: adminId,
+    entraObjectId: `standalone:${adminId}`,
+    displayName: config.STANDALONE_ADMIN_NAME,
+    email: config.STANDALONE_ADMIN_EMAIL.toLowerCase(),
+    jobTitle: 'Application Administrator',
+    department: 'Lighting Solutions',
+    role: 'Admin',
+    weeklyCapacityHours: 0,
+    availabilityStatus: 'Available',
+    avatarUrl: null,
+    isActive: true,
+    createdAt: now,
+    updatedAt: now,
+  };
+  return {
+    users: [admin],
+    projects: [],
+    activities: [],
+    comments: [],
+    notifications: [],
+    settings: {
+      ...structuredClone(seedSettings),
+      companyTimezone: config.COMPANY_TIMEZONE,
+      updatedAt: now,
+      updatedById: adminId,
+    },
+    lastSequence: 0,
+  };
+}
+
+export class StandaloneDataProvider extends MockDataProvider implements LocalIdentityProvider {
+  private readonly database: DatabaseSyncInstance;
+
+  public constructor(private readonly config: AppConfig) {
+    const databasePath = path.resolve(process.cwd(), config.STANDALONE_DB_PATH);
+    mkdirSync(path.dirname(databasePath), { recursive: true });
+    const database = new DatabaseSync(databasePath);
+    database.exec(`
+      PRAGMA journal_mode = WAL;
+      PRAGMA foreign_keys = ON;
+      CREATE TABLE IF NOT EXISTS app_state (
+        state_key TEXT PRIMARY KEY,
+        json_value TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      );
+      CREATE TABLE IF NOT EXISTS local_accounts (
+        user_id TEXT PRIMARY KEY,
+        email TEXT NOT NULL UNIQUE COLLATE NOCASE,
+        salt TEXT NOT NULL,
+        password_hash TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      );
+      CREATE TABLE IF NOT EXISTS idempotency_keys (
+        idempotency_key TEXT PRIMARY KEY,
+        project_id TEXT NOT NULL,
+        created_at TEXT NOT NULL
+      );
+    `);
+    const stateRow = database
+      .prepare('SELECT json_value FROM app_state WHERE state_key = ?')
+      .get('primary') as { json_value: string } | undefined;
+    const seed = stateRow
+      ? (persistedStateSchema.parse(JSON.parse(stateRow.json_value)) as unknown as SeedData)
+      : standaloneSeed(config);
+    super(seed, 'standalone');
+    this.database = database;
+    if (!stateRow) this.persist();
+    this.ensureBootstrapAccount();
+  }
+
+  private persist(): void {
+    this.database
+      .prepare(
+        `INSERT INTO app_state (state_key, json_value, updated_at)
+         VALUES (?, ?, ?)
+         ON CONFLICT(state_key) DO UPDATE SET
+           json_value = excluded.json_value,
+           updated_at = excluded.updated_at`,
+      )
+      .run('primary', JSON.stringify(this.snapshot()), new Date().toISOString());
+  }
+
+  private ensureBootstrapAccount(): void {
+    const count = this.database.prepare('SELECT COUNT(*) AS count FROM local_accounts').get() as {
+      count: number;
+    };
+    if (count.count > 0) return;
+    const admin = this.data.users.find((user) => user.role === 'Admin' && user.isActive);
+    if (!admin) throw new Error('Standalone mode requires an active bootstrap Admin.');
+    const { salt, hash } = hashPassword(this.config.STANDALONE_ADMIN_PASSWORD);
+    this.database
+      .prepare(
+        `INSERT INTO local_accounts (user_id, email, salt, password_hash, updated_at)
+         VALUES (?, ?, ?, ?, ?)`,
+      )
+      .run(admin.id, admin.email.toLowerCase(), salt, hash, new Date().toISOString());
+  }
+
+  public override async createUser(user: AppUser): Promise<AppUser> {
+    const created = await super.createUser(user);
+    this.persist();
+    return created;
+  }
+
+  public override async updateUser(id: string, patch: Partial<AppUser>): Promise<AppUser> {
+    const updated = await super.updateUser(id, patch);
+    this.database
+      .prepare('UPDATE local_accounts SET email = ?, updated_at = ? WHERE user_id = ?')
+      .run(updated.email.toLowerCase(), new Date().toISOString(), id);
+    this.persist();
+    return updated;
+  }
+
+  public override async createProject(record: ProjectCreateRecord): Promise<Project> {
+    const existing = this.database
+      .prepare('SELECT project_id FROM idempotency_keys WHERE idempotency_key = ?')
+      .get(record.idempotencyKey) as { project_id: string } | undefined;
+    if (existing) {
+      const project = await this.getProject(existing.project_id);
+      if (project) return project;
+    }
+    const created = await super.createProject(record);
+    this.database
+      .prepare(
+        'INSERT OR IGNORE INTO idempotency_keys (idempotency_key, project_id, created_at) VALUES (?, ?, ?)',
+      )
+      .run(record.idempotencyKey, created.id, new Date().toISOString());
+    this.persist();
+    return created;
+  }
+
+  public override async updateProject(id: string, patch: Partial<Project>): Promise<Project> {
+    const updated = await super.updateProject(id, patch);
+    this.persist();
+    return updated;
+  }
+
+  public override async allocateProjectNumber(): Promise<number> {
+    const allocated = await super.allocateProjectNumber();
+    this.persist();
+    return allocated;
+  }
+
+  public override async setProjectSequenceFloor(sequence: number): Promise<void> {
+    await super.setProjectSequenceFloor(sequence);
+    this.persist();
+  }
+
+  public override async deleteProject(id: string): Promise<void> {
+    await super.deleteProject(id);
+    this.database.prepare('DELETE FROM idempotency_keys WHERE project_id = ?').run(id);
+    this.persist();
+  }
+
+  public override async appendActivities(activities: ProjectActivity[]): Promise<void> {
+    await super.appendActivities(activities);
+    this.persist();
+  }
+
+  public override async addComment(comment: ProjectComment): Promise<ProjectComment> {
+    const created = await super.addComment(comment);
+    this.persist();
+    return created;
+  }
+
+  public override async addNotifications(notifications: AppNotification[]): Promise<void> {
+    await super.addNotifications(notifications);
+    this.persist();
+  }
+
+  public override async markNotificationRead(id: string, userId: string): Promise<AppNotification> {
+    const updated = await super.markNotificationRead(id, userId);
+    this.persist();
+    return updated;
+  }
+
+  public override async updateSettings(settings: AppSettings): Promise<AppSettings> {
+    const updated = await super.updateSettings(settings);
+    this.persist();
+    return updated;
+  }
+
+  public async verifyCredentials(email: string, password: string): Promise<AppUser | null> {
+    const account = this.database
+      .prepare(
+        'SELECT user_id, salt, password_hash FROM local_accounts WHERE email = ? COLLATE NOCASE',
+      )
+      .get(email.trim().toLowerCase()) as
+      { user_id: string; salt: string; password_hash: string } | undefined;
+    if (!account) {
+      scryptSync(password, 'constant-missing-account-salt', 64);
+      return null;
+    }
+    const supplied = scryptSync(password, account.salt, 64);
+    const expected = Buffer.from(account.password_hash, 'hex');
+    if (supplied.length !== expected.length || !timingSafeEqual(supplied, expected)) return null;
+    const user = await this.getUser(account.user_id);
+    return user?.isActive ? user : null;
+  }
+
+  public async setPassword(userId: string, password: string): Promise<void> {
+    const user = await this.getUser(userId);
+    if (!user) throw new DomainError('NOT_FOUND', 'User not found.', 404);
+    const { salt, hash } = hashPassword(password);
+    const updatedAt = new Date().toISOString();
+    this.database
+      .prepare(
+        `INSERT INTO local_accounts (user_id, email, salt, password_hash, updated_at)
+         VALUES (?, ?, ?, ?, ?)
+         ON CONFLICT(user_id) DO UPDATE SET
+           email = excluded.email,
+           salt = excluded.salt,
+           password_hash = excluded.password_hash,
+           updated_at = excluded.updated_at`,
+      )
+      .run(user.id, user.email.toLowerCase(), salt, hash, updatedAt);
+    await super.updateUser(user.id, { updatedAt });
+    this.persist();
+  }
+
+  public close(): void {
+    this.database.close();
+  }
+}

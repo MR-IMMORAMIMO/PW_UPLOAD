@@ -1,0 +1,12 @@
+{
+  "name": "@scli/config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "@scli/domain": "workspace:*",
+    "zod": "^4.4.3"
+  }
+}

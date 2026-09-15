@@ -1,0 +1,124 @@
+{
+  "name": "scli-lighting-project-workspace",
+  "version": "3.3.3",
+  "private": true,
+  "type": "module",
+  "main": "desktop/entry.cjs",
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=24 <25",
+    "pnpm": ">=11 <12"
+  },
+  "scripts": {
+    "dev": "concurrently --names api,web --prefix-colors green,cyan \"pnpm --filter @scli/api dev\" \"pnpm --filter @scli/web dev\"",
+    "dev:api": "pnpm --filter @scli/api dev",
+    "dev:web": "pnpm --filter @scli/web dev",
+    "golden:uat": "tsx apps/api/src/golden-uat/golden-uat-cli.ts",
+    "golden:v19": "tsx apps/api/src/golden-uat/golden-v19-cli.ts",
+    "golden:v19:verify": "tsx apps/api/src/golden-uat/golden-v19-cli.ts --verify",
+    "golden:comments:reconcile": "tsx apps/api/src/scripts/golden-comments-reconciliation-cli.ts",
+    "revision-delete:uat:prepare": "tsx apps/api/src/scripts/revision-delete-uat-prepare-cli.ts",
+    "migration:v9-v10": "tsx apps/api/src/scripts/live-v9-v10-migration-cli.ts",
+    "build": "pnpm --filter @scli/api build && pnpm --filter @scli/web-v4 build && pnpm --filter @scli/web build",
+    "desktop:run": "pnpm build && electron .",
+    "desktop:portable": "pnpm build && electron-builder --win portable --x64",
+    "desktop:team-portable": "pnpm build && electron-builder --config electron-builder.team.yml --win portable --x64",
+    "desktop:original-team": "pnpm build && electron-builder --config electron-builder.original-team.yml --win portable --x64",
+    "ocr:package-smoke": "node scripts/verify-ocr-package.mjs",
+    "ocr:runtime-smoke": "node scripts/smoke-offline-ocr.mjs",
+    "start": "pnpm --filter @scli/api start",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit -p packages/domain/tsconfig.json --pretty false && tsc --noEmit -p packages/contracts/tsconfig.json --pretty false && tsc --noEmit -p packages/config/tsconfig.json --pretty false && tsc --noEmit -p packages/test-data/tsconfig.json --pretty false && tsc --noEmit -p apps/api/tsconfig.json --pretty false && tsc --noEmit -p apps/web/tsconfig.json --pretty false && tsc --noEmit -p scripts/tsconfig.json --pretty false && pnpm --dir apps/web-v4 typecheck",
+    "test": "vitest run --exclude \"apps/web/**/*.test.tsx\" --exclude \"apps/web-v4/**\" --exclude \"tests/e2e/**\" --exclude \"tests/personal-e2e/**\" --exclude \"tests/v4-e2e/**\" --exclude \"desktop/**/*.test.cjs\"",
+    "test:components": "vitest run apps/web/src/screens/screens.test.tsx",
+    "test:all": "pnpm test && pnpm test:desktop && pnpm test:components && pnpm --dir apps/web-v4 test",
+    "test:e2e": "playwright test",
+    "test:e2e:personal": "playwright test --config playwright.personal.config.ts",
+    "test:e2e:v4": "playwright test --config playwright.v4.config.ts",
+    "test:e2e:ui": "playwright test --ui",
+    "teams:icons": "node scripts/generate-icons.mjs",
+    "teams:env": "node scripts/prepare-local-env.mjs",
+    "teams:validate": "pnpm teams:icons && pnpm teams:env && node scripts/validate-manifest.mjs && atk validate --env local",
+    "teams:package": "pnpm teams:icons && node scripts/package-teams-app.mjs",
+    "sharepoint:provision": "tsx scripts/provision-sharepoint.ts",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test:all && pnpm test:e2e && pnpm test:e2e:personal && pnpm test:e2e:v4 && pnpm build && pnpm teams:validate && pnpm teams:package",
+    "test:desktop": "node --test desktop/*.test.cjs"
+  },
+  "devDependencies": {
+    "@azure/identity": "4.13.1",
+    "@eslint/js": "^9.0.0",
+    "@microsoft/m365agentstoolkit-cli": "1.1.13",
+    "@playwright/test": "^1.62.1",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^26.1.2",
+    "@types/pngjs": "^6.0.5",
+    "@vitejs/plugin-react": "^6.0.5",
+    "@vitest/coverage-v8": "^4.1.10",
+    "archiver": "^8.0.0",
+    "concurrently": "^10.0.4",
+    "electron": "43.2.0",
+    "electron-builder": "26.15.3",
+    "eslint": "^9.0.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.8.0",
+    "jsdom": "^30.0.1",
+    "pngjs": "^7.0.0",
+    "prettier": "^3.9.6",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.65.0",
+    "vite": "^8.2.0",
+    "vitest": "^4.1.10"
+  },
+  "build": {
+    "appId": "com.scientechnic.scli.workspace",
+    "productName": "SCT Workspace",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop/**/*",
+      "apps/api/dist/**/*",
+      "apps/web/dist/**/*",
+      "apps/web-v4/dist/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "tools/render-luminaire-studio.cjs",
+        "to": "studio/render-luminaire-studio.cjs"
+      },
+      {
+        "from": "tools/luminaire-studio-v1.4.1",
+        "to": "studio/luminaire-studio-v1.4.1"
+      },
+      {
+        "from": "tools/luminaire-exporter/SCLI Luminaire Studio.exe",
+        "to": "luminaire-exporter/SCLI Luminaire Studio.exe"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "SCT Workspace Portable v${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "SCT Workspace Portable v${version}.${ext}"
+    }
+  },
+  "scliLocalAi": false
+}

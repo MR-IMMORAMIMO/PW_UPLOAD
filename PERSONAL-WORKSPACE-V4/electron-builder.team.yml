@@ -1,0 +1,24 @@
+appId: com.scientechnic.scli.teamworkspace
+productName: SCLI Team Workspace
+asar: true
+directories:
+  output: release-team
+files:
+  - desktop/**/*
+  - apps/api/dist/**/*
+  - apps/web/dist/**/*
+  - package.json
+extraResources:
+  - from: tools/luminaire-exporter/SCLI Luminaire Studio.exe
+    to: luminaire-exporter/SCLI Luminaire Studio.exe
+extraMetadata:
+  main: desktop/main.cjs
+  scliWorkspaceVariant: team
+win:
+  target:
+    - target: portable
+      arch:
+        - x64
+  artifactName: SCLI Team Workspace v${version}.${ext}
+portable:
+  artifactName: SCLI Team Workspace v${version}.${ext}

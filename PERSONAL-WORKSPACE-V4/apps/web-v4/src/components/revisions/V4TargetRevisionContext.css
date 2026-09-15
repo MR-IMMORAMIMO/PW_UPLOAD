@@ -1,0 +1,104 @@
+/**
+ * C1 — Target Revision context strip styles.
+ *
+ * Local to the composition-target component and imported by it. The global
+ * `styles-v4.css` grammar is UNTOUCHED; this file only adds the deltas the
+ * strip needs and reuses the existing V4 tokens for colour, radius, and spacing.
+ *
+ * Deliberately compact: one row, fixed height, no hero banner, so the strip
+ * never competes with the workspace it annotates.
+ */
+
+.v4-target-context {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--v4-space-3);
+  min-height: 40px;
+  border: 1px solid color-mix(in srgb, var(--v4-accent) 42%, var(--v4-border));
+  border-radius: var(--v4-radius-md);
+  padding: var(--v4-space-2) var(--v4-space-3);
+  background: color-mix(in srgb, var(--v4-accent) 8%, var(--v4-surface));
+  color: var(--v4-text-primary);
+}
+.v4-target-context > svg {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  color: var(--v4-accent);
+}
+
+.v4-target-context__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.v4-target-context__body strong {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.v4-target-context__body span {
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--v4-text-muted);
+}
+.v4-target-context__label {
+  font-weight: 700;
+  color: var(--v4-accent);
+}
+
+.v4-target-context__clear {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  border: 1px solid var(--v4-border);
+  border-radius: 999px;
+  padding: 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--v4-surface);
+  color: var(--v4-text-muted);
+  cursor: pointer;
+}
+.v4-target-context__clear:hover {
+  border-color: var(--v4-accent);
+  color: var(--v4-accent);
+}
+.v4-target-context__clear > svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* Invalid target: an explicit blocking state, never a silent standalone fallback. */
+.v4-target-context--invalid {
+  border-color: color-mix(in srgb, var(--v4-danger) 40%, var(--v4-border));
+  background: color-mix(in srgb, var(--v4-danger) 8%, var(--v4-surface));
+}
+.v4-target-context--invalid > svg {
+  color: var(--v4-danger);
+}
+.v4-target-context--invalid .v4-target-context__body strong {
+  color: var(--v4-danger);
+}
+.v4-target-context--invalid .v4-target-context__body span {
+  white-space: normal;
+}
+
+@media (max-width: 700px) {
+  .v4-target-context {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .v4-target-context__body span {
+    white-space: normal;
+  }
+}

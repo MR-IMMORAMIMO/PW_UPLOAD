@@ -1,0 +1,206 @@
+/* Phase 3C shell-family chrome. Phase 3B timing and presence selectors remain
+ * owned by `styles-v4.css`; this file changes visual treatment only. */
+
+.v4-shell,
+.v4-shell__main {
+  background: var(--v4-surface-base);
+  color: var(--v4-text-primary);
+}
+.v4-shell__content {
+  padding: var(--v4-space-2xl) var(--v4-space-2xl) var(--v4-space-3xl);
+}
+.v4-shell__page {
+  margin-top: var(--v4-space-lg);
+}
+
+/* Project context header: floating context surface without changing content. */
+.v4-shell__context-header {
+  padding: var(--v4-space-md) var(--v4-space-2xl) 0;
+  background: var(--v4-surface-base);
+}
+.v4-pch {
+  top: var(--v4-space-md);
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--v4-space-md);
+  border: 1px solid var(--v4-border-subtle);
+  border-radius: var(--v4-radius-floating);
+  padding: var(--v4-space-md) var(--v4-space-lg);
+  background: var(--v4-surface-floating);
+  box-shadow: var(--v4-shadow-raised);
+}
+.v4-pch--scrolled {
+  border-color: var(--v4-border-control);
+  box-shadow: var(--v4-shadow-floating);
+}
+.v4-pch__field {
+  gap: var(--v4-space-xxs);
+  padding: 0 var(--v4-space-sm);
+  border-left-color: var(--v4-border-subtle);
+}
+.v4-pch__label {
+  color: var(--v4-text-muted);
+  font-size: var(--v4-type-label-size);
+  font-weight: 650;
+  line-height: var(--v4-type-label-line);
+}
+.v4-pch__value {
+  color: var(--v4-text-primary);
+  font-size: var(--v4-type-body-size);
+  line-height: var(--v4-type-body-line);
+}
+.v4-pch__action-slot {
+  gap: var(--v4-space-sm);
+}
+.v4-project-edit-action,
+.v4-project-overflow-action,
+.v4-project-status-control__trigger {
+  min-height: var(--v4-control-compact-height);
+  border-radius: var(--v4-radius-control);
+}
+.v4-project-edit-action {
+  border-color: transparent;
+  background: transparent;
+  color: var(--v4-action-primary);
+}
+.v4-project-edit-action:hover {
+  background: var(--v4-accent-hover);
+}
+.v4-project-overflow-action {
+  width: var(--v4-control-compact-height);
+  border-color: var(--v4-border-control);
+  background: transparent;
+  color: var(--v4-text-secondary);
+}
+
+/* Sidebar keeps its approved geometry, with theme-correct shell surfaces. */
+.v4-sidebar {
+  --v4-sidebar-bg: var(--v4-surface-raised);
+  --v4-sidebar-fg: var(--v4-text-primary);
+  --v4-sidebar-muted: var(--v4-text-muted);
+  --v4-sidebar-border: var(--v4-border-subtle);
+  --v4-sidebar-hover: var(--v4-accent-hover);
+  --v4-sidebar-active-bg: var(--v4-accent-selected);
+  --v4-sidebar-active-fg: var(--v4-text-primary);
+  background: var(--v4-sidebar-bg);
+  color: var(--v4-sidebar-fg);
+  border-right-color: var(--v4-sidebar-border);
+}
+:root[data-theme='dark'] .v4-sidebar {
+  --v4-sidebar-bg: var(--v4-surface-shell);
+  --v4-sidebar-fg: var(--v4-text-primary);
+  --v4-sidebar-muted: var(--v4-text-muted);
+  --v4-sidebar-border: var(--v4-border-subtle);
+  --v4-sidebar-hover: var(--v4-accent-hover);
+  --v4-sidebar-active-bg: var(--v4-accent-selected);
+  --v4-sidebar-active-fg: var(--v4-text-primary);
+}
+.v4-nav-item {
+  border-radius: var(--v4-radius-control);
+  color: var(--v4-sidebar-fg);
+  font-size: var(--v4-type-body-size);
+}
+.v4-nav-item--active {
+  background: var(--v4-sidebar-active-bg);
+  color: var(--v4-sidebar-active-fg);
+  font-weight: 700;
+}
+.v4-nav-item--active .v4-nav-item__edge {
+  width: 2px;
+  background: var(--v4-accent);
+}
+.v4-nav-item--active .v4-nav-item__icon,
+.v4-active-child .v4-nav-item__icon,
+.v4-sidebar--minimal .v4-nav-item--active .v4-nav-item__icon {
+  color: var(--v4-accent);
+}
+.v4-sidebar--minimal .v4-nav-item--active {
+  border-radius: var(--v4-radius-control);
+  background: var(--v4-sidebar-active-bg);
+}
+.v4-sidebar__group-header {
+  color: var(--v4-sidebar-muted);
+  font-size: var(--v4-type-label-size);
+  line-height: var(--v4-type-label-line);
+}
+
+/* Work Session: neutral shell/raised surfaces with semantic accents only. */
+.v4-work-session-anchor {
+  border-color: var(--v4-border-subtle);
+  background: var(--v4-surface-base);
+  color: var(--v4-text-primary);
+  box-shadow: none;
+}
+.v4-work-session-anchor:hover {
+  background: var(--v4-accent-hover);
+}
+.v4-work-session-anchor__copy > span,
+.v4-work-session-anchor__chevron {
+  color: var(--v4-text-muted);
+}
+.v4-work-session-strip {
+  border-bottom: 1px solid var(--v4-border-subtle);
+  background: var(--v4-surface-shell);
+  color: var(--v4-text-primary);
+  box-shadow: none;
+}
+.v4-work-session-strip[data-state='PAUSED'] {
+  background: var(--v4-surface-shell);
+}
+.v4-work-session-tray {
+  border: 1px solid var(--v4-border-subtle);
+  border-radius: var(--v4-radius-floating);
+  background: var(--v4-surface-floating);
+  color: var(--v4-text-primary);
+  box-shadow: var(--v4-shadow-floating);
+  backdrop-filter: none;
+}
+.v4-work-session-tray__project,
+.v4-work-session-tray__timer {
+  border-color: var(--v4-border-subtle);
+  background: var(--v4-surface-raised);
+}
+.v4-work-session-strip button,
+.v4-work-session-tray__actions button {
+  min-height: var(--v4-control-compact-height);
+  border-color: var(--v4-border-control);
+  border-radius: var(--v4-radius-control);
+  background: transparent;
+  color: var(--v4-text-primary);
+}
+.v4-work-session-control--stop {
+  border-color: color-mix(in srgb, var(--v4-danger) 45%, var(--v4-border-control));
+  background: color-mix(in srgb, var(--v4-danger) 7%, transparent);
+  color: var(--v4-status-critical-fg);
+}
+.v4-work-session-tray__start {
+  background: var(--v4-action-primary);
+  color: var(--v4-action-primary-foreground);
+}
+
+@media (max-width: 1180px) {
+  .v4-shell__context-header {
+    padding-inline: var(--v4-space-lg);
+  }
+  .v4-shell__content,
+  .v4-shell__content--bounded {
+    padding: var(--v4-space-lg);
+  }
+  .v4-pch {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .v4-pch__fields {
+    grid-template-columns:
+      minmax(82px, 0.72fr)
+      minmax(132px, 1.25fr)
+      minmax(100px, 1fr)
+      minmax(96px, 0.9fr)
+      minmax(96px, 0.9fr)
+      minmax(106px, 1fr);
+  }
+  .v4-pch__field {
+    padding-inline: var(--v4-space-sm);
+  }
+  .v4-pch__action-slot {
+    justify-content: flex-end;
+  }
+}
