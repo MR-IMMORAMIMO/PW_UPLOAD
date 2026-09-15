@@ -14,6 +14,48 @@
   gap: 12px;
   flex-wrap: wrap;
 }
+
+/* New Project compact editor/help surfaces must size to content instead of
+ * inheriting the shared near-full-screen workspace geometry. */
+.v4-floating-workspace.v4-editor-float {
+  width: min(680px, calc(100vw - 40px));
+  height: auto;
+  max-height: calc(100dvh - 48px);
+  min-height: 0;
+}
+.v4-editor-float .v4-floating-workspace__body {
+  min-height: 0;
+  overflow: auto;
+  padding: 24px;
+}
+.v4-editor-float .v4-floating-workspace__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* The folder preview needs more horizontal room than a form editor, but should
+ * still remain content-sized rather than opening as a near-full-screen modal. */
+.v4-floating-workspace:has(> .v4-floating-workspace__body > .project-folder-tree) {
+  width: min(760px, calc(100vw - 40px));
+  height: auto;
+  max-height: min(720px, calc(100dvh - 48px));
+  min-height: 0;
+}
+
+/* The inline Custom deliverable editor is intentionally a one-field compact
+ * dialog. Keep this selector structural so the approved markup/design stays
+ * unchanged. */
+.v4-floating-workspace:has(
+    > .v4-floating-workspace__body > label > input[maxlength='120']
+  ) {
+  width: min(520px, calc(100vw - 40px));
+  height: auto;
+  max-height: calc(100dvh - 48px);
+  min-height: 0;
+}
+
 .v4-wizard-template-browser {
   display: grid;
   grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr);
